@@ -161,3 +161,28 @@ footer {
         margin: 0.5rem 0;
     }
 }
+/* Media Query para pantallas de celular o tablet (menos de 768px) */
+@media (max-width: 768px) {
+    #btn-hamburguesa {
+        display: block !important; /* Muestra el botón de tres líneas */
+    }
+
+    .navegacion-principal {
+        display: none !important; /* Oculta el menú normal horizontal */
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Ajusta esto según la altura de tu header */
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        gap: 15px !important;
+    }
+
+    /* Clase que se añade con JS al hacer clic */
+    .navegacion-principal.menu-activo {
+        display: flex !important; 
+    }
+}

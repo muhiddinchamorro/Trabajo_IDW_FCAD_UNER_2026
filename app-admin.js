@@ -48,15 +48,19 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         contenedorHeader.innerHTML = `
-            <!-- LOGO A LA IZQUIERDA -->
             <div class="logo-seccion" style="display: flex; align-items: center; gap: 12px;">
                 <img src="./asset/images/icono.png" alt="Logo de la veterinaria" class="logo-veterinaria" style="width: 45px; height: 45px; object-fit: contain;" onerror="this.style.display='none'">
                 <span class="logo-texto" style="font-weight: 700; color: #2d3748; font-size: 1.3rem;">La Mary</span>
             </div>
-            
-            <nav class="navegacion-principal" style="display: flex; gap: 25px; align-items: center;">
+
+                    <!-- Botón Hamburguesa (Solo visible en móviles) -->
+            <button id="btn-hamburguesa" class="btn-hamburguesa" aria-label="Abrir menú" style="display: none; background: none; border: none; font-size: 28px; cursor: pointer; color: #2d3748;">
+                ☰
+            </button>
+
+            <nav id="navegacion-principal" class="navegacion-principal" style="display: flex; gap: 25px; align-items: center;">
                 <a href="./index.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('index.html')}">Inicio</a>
-                <a href="./Institucional.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('Institucional.html')}">Institucional</a>
+                <a href="./institucional.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('institucional.html')}">Institucional</a>
                 <a href="./contacto.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('contacto.html')}">Contacto</a>
                 
                 ${mostrarMenuPrivado ? `
@@ -64,9 +68,21 @@ document.addEventListener("DOMContentLoaded", function() {
                     <a href="./mascotas.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('mascotas.html')}">Mascotas</a>
                     <a href="./veterinarios.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('veterinarios.html')}">Veterinarios</a>
                     <a href="./historia_clinica.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('historia_clinica.html')}">Historias Clínicas</a>
-                    <a href="./pedirturno.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('pedirturno.html')}">Gestión de Turnos</a>
+                    <a href="./pedirturno.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('pedirturno.html')}">Gestión Turnos</a>
                 ` : ''}
             </nav>
+                // Lógica interactiva para el menú responsive
+                const btnHamburguesa = document.getElementById('btn-hamburguesa');
+                const navPrincipal = document.getElementById('navegacion-principal');
+
+                if (btnHamburguesa && navPrincipal) {
+                    btnHamburguesa.addEventListener('click', () => {
+                        navPrincipal.classList.toggle('menu-activo');
+                        // Cambia el ícono entre barra y cruz
+                        btnHamburguesa.textContent = navPrincipal.classList.contains('menu-activo') ? '✖' : '☰';
+                    });
+                }
+
 
             <div class="botones-sesion" style="display: flex; align-items: center; gap: 12px;">
                 ${mostrarMenuPrivado ? `

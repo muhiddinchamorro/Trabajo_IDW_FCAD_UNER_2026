@@ -45,9 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return esAdminLink 
                 ? 'text-decoration: none; font-weight: 700; color: #4a5568;' 
                 : 'text-decoration: none; color: #4a5568; font-weight: 500;';
-        };
 
-    // Reemplaza desde donde empieza 'contenedorHeader.innerHTML = `' hasta el final de la div de botones:
     contenedorHeader.innerHTML = `
         <div class="logo-seccion" style="display: flex; align-items: center; gap: 12px;">
             <img src="./asset/images/icono.png" alt="Logo de la veterinaria" class="logo-veterinaria" style="width: 45px;">
@@ -82,7 +80,9 @@ document.addEventListener("DOMContentLoaded", function() {
             `}
         </div>
     `;
-        try {
+
+    // Lógica interactiva aislada para el menú responsive (Una sola vez y bien ubicada)
+    try {
         const btnHamburguesa = document.getElementById('btn-hamburguesa');
         const navPrincipal = document.getElementById('navegacion-principal');
 
@@ -100,18 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
     } catch (error) {
         console.warn("Error controlado en el menú adaptativo:", error);
     }
-
-    // Lógica interactiva para el menú responsive (Ahora sí, completamente fuera del HTML)
-    const btnHamburguesa = document.getElementById('btn-hamburguesa');
-    const navPrincipal = document.getElementById('navegacion-principal');
-
-    if (btnHamburguesa && navPrincipal) {
-        btnHamburguesa.addEventListener('click', () => {
-            navPrincipal.classList.toggle('menu-activo');
-            btnHamburguesa.textContent = navPrincipal.classList.contains('menu-activo') ? '✖' : '☰';
-        });
-    }
-
 
         const botonLogout = document.getElementById('btn-logout');
         if (botonLogout) {

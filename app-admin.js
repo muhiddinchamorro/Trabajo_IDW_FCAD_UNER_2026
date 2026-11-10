@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 ? 'text-decoration: none; font-weight: 700; color: #4a5568;' 
                 : 'text-decoration: none; color: #4a5568; font-weight: 500;';
 
-    contenedorHeader.innerHTML = `
+        contenedorHeader.innerHTML = `
         <div class="logo-seccion" style="display: flex; align-items: center; gap: 12px;">
             <img src="./asset/images/icono.png" alt="Logo de la veterinaria" class="logo-veterinaria" style="width: 45px;">
             <span class="logo-texto" style="font-weight: 700; color: #2d3748; font-size: 1.3rem;">La Mary</span>
@@ -79,27 +79,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 <a href="./login.html" class="btn-registrar" style="text-decoration: none; display: inline-block; background-color: #008F80; color: white; padding: 8px 16px; border-radius: 4px;">Iniciar Sesión</a>
             `}
         </div>
-    `;
+        `;
 
-    // Lógica interactiva aislada para el menú responsive (Una sola vez y bien ubicada)
-    try {
-        const btnHamburguesa = document.getElementById('btn-hamburguesa');
-        const navPrincipal = document.getElementById('navegacion-principal');
+        // Lógica interactiva aislada para el menú responsive
+        try {
+            const btnHamburguesa = document.getElementById('btn-hamburguesa');
+            const navPrincipal = document.getElementById('navegacion-principal');
 
-        if (btnHamburguesa && navPrincipal) {
-            btnHamburguesa.replaceWith(btnHamburguesa.cloneNode(true));
-            const btnLimpio = document.getElementById('btn-hamburguesa');
-            
-            btnLimpio.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                navPrincipal.classList.toggle('menu-activo');
-                btnLimpio.textContent = navPrincipal.classList.contains('menu-activo') ? '✖' : '☰';
-            });
+            if (btnHamburguesa && navPrincipal) {
+                btnHamburguesa.replaceWith(btnHamburguesa.cloneNode(true));
+                const btnLimpio = document.getElementById('btn-hamburguesa');
+                
+                btnLimpio.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navPrincipal.classList.toggle('menu-activo');
+                    btnLimpio.textContent = navPrincipal.classList.contains('menu-activo') ? '✖' : '☰';
+                });
+            }
+        } catch (error) {
+            console.warn("Error controlado en el menú adaptativo:", error);
         }
-    } catch (error) {
-        console.warn("Error controlado en el menú adaptativo:", error);
-    }
 
         const botonLogout = document.getElementById('btn-logout');
         if (botonLogout) {

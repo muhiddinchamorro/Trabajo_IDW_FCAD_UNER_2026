@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return esAdminLink 
                 ? 'text-decoration: none; font-weight: 700; color: #4a5568;' 
                 : 'text-decoration: none; color: #4a5568; font-weight: 500;';
-        }; // <--- ¡AQUÍ ESTABA EL ERROR! Ya cerramos la función correctamente.
+        }; // Cierre de la función de estilos corregido
 
         contenedorHeader.innerHTML = `
         <div class="logo-seccion" style="display: flex; align-items: center; gap: 12px;">
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('modo') === 'filtrar') {
-        const panelFiltros = document.querySelector('[class^="panel-filters-"]');
+        const panelFiltros = document.querySelector('[class^="panel-filtros-"]');
         if (panelFiltros) {
             panelFiltros.scrollIntoView({ behavior: 'smooth' });
         }

@@ -163,25 +163,31 @@ footer {
 }
 @media (max-width: 768px) {
     #btn-hamburguesa {
-        display: block !important; /* Muestra el botón de tres líneas */
+        display: block !important;
     }
 
-    .navegacion-principal {
-        display: none !important; /* Oculta el menú normal horizontal */
-        flex-direction: column;
-        position: absolute;
-        top: 70px; /* Ajusta esto según la altura de tu header */
+    nav#navegacion-principal.navegacion-principal {
+        display: none !important; 
+        flex-direction: column !important;
+        position: absolute !important;
+        top: 65px; 
         left: 0;
         width: 100%;
-        background-color: #ffffff;
-        padding: 20px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
+        background-color: #ffffff !important;
+        padding: 20px !important;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        z-index: 1000 !important;
         gap: 15px !important;
+        align-items: flex-start !important; 
     }
 
-    /* Clase que se añade con JS al hacer clic */
-    .navegacion-principal.menu-activo {
-        display: flex !important; 
+    nav#navegacion-principal.navegacion-principal.menu-activo {
+        display: flex !important;
+    }
+
+    nav#navegacion-principal.navegacion-principal a {
+        width: 100%;
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
     }
 }

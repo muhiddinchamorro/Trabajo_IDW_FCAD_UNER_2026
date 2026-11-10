@@ -1,5 +1,5 @@
 .formulario-mascotas {
-    max-width: 1050px; /* Incrementado para optimizar visualmente las nuevas columnas */
+    max-width: 1050px; 
     margin: 0 auto;
     padding: 10px 0;
 }
@@ -120,18 +120,16 @@ textarea.form-control {
     background-color: #008F80;
 }
 @media print {
-    /* 1. Ocultamos absolutamente todo el diseño estándar de la web */
+
     body > *:not(#contenedorImpresionDinamica) {
         display: none !important;
     }
     
-    /* 2. Forzamos la visibilidad del contenedor sin romper la estructura de las tablas */
     #contenedorImpresionDinamica {
         display: block !important;
         width: 100% !important;
     }
 
-    /* 3. Mantenemos el comportamiento de tabla nativo para que se organice en columnas */
     #contenedorImpresionDinamica table {
         display: table !important;
         width: 100% !important;
@@ -159,7 +157,6 @@ textarea.form-control {
         border-bottom: 1px solid #edf2f7 !important;
     }
 
-    /* 4. Estilos generales de la hoja limpia */
     body {
         background: white !important;
         color: black !important;

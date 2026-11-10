@@ -249,7 +249,6 @@ window.exportarSeccionConFiltro = function(seccion) {
 
     const fechaActual = new Date().toLocaleDateString();
 
-    // 4. Inyectamos el diseño en el contenedor dinámico
     contenedorImpresion.innerHTML = `
         <div style="border-bottom: 2px solid #008F80; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; font-family: system-ui, sans-serif;">
             <div>
@@ -271,7 +270,7 @@ window.exportarSeccionConFiltro = function(seccion) {
     window.print();
     
     document.title = tituloOriginal;
-    contenedorImpresion.innerHTML = ""; // Limpiamos al terminar
+    contenedorImpresion.innerHTML = ""; 
 };
 
 

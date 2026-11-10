@@ -15,7 +15,7 @@ if (paginasProtegidas.includes(urlActual) && !tokenActivo) {
 }
 
 if (urlActual === 'login.html' && tokenActivo) {
-    window.location.href = './admin.html'; // Uso de ruta relativa segura
+    window.location.href = './admin.html'; 
 }
 
 
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return esAdminLink 
                 ? 'text-decoration: none; font-weight: 700; color: #4a5568;' 
                 : 'text-decoration: none; color: #4a5568; font-weight: 500;';
-        }; // Cierre de la función de estilos corregido
+        }; 
 
         contenedorHeader.innerHTML = `
         <div class="logo-seccion" style="display: flex; align-items: center; gap: 12px;">
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <span class="logo-texto" style="font-weight: 700; color: #2d3748; font-size: 1.3rem;">La Mary</span>
         </div>
 
-        <!-- Botón Hamburguesa (Solo visible en móviles) -->
+
         <button id="btn-hamburguesa" class="btn-hamburguesa" aria-label="Abrir menú" style="display: none; background: none; border: none; font-size: 28px; cursor: pointer; color: #2d3748;">
             ☰
         </button>
@@ -82,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
         `;
 
-        // Lógica interactiva aislada para el menú responsive
         try {
             const btnHamburguesa = document.getElementById('btn-hamburguesa');
             const navPrincipal = document.getElementById('navegacion-principal');
@@ -112,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     }
-    // REEMPLAZAR DESDE LA LÍNEA 116 HASTA EL FINAL DE TU ARCHIVO POR ESTO:
+
     if (urlActual === 'historia_clinica.html') {
         if (typeof mostrarHistorias === "function") {
             mostrarHistorias();
@@ -149,8 +148,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 primerInput.focus();
             }
         }
-    } // Fin de la protección para historia_clinica.html
-}); // Este es el cierre definitivo del DOMContentLoaded (última línea)
+    } 
+}); 
 
 
 function filtrarTablaHistorias() {
@@ -159,7 +158,6 @@ function filtrarTablaHistorias() {
     const inpDiag = document.getElementById("fHistDiag");
     const inpTratamiento = document.getElementById("fHistTratamiento");
 
-    // Guardas de seguridad: Si no existen estos inputs en la página (como en admin.html), salimos sin romper nada
     if (!inpMascota && !inpSintomas && !inpDiag && !inpTratamiento) return;
 
     const vMascota = inpMascota ? inpMascota.value.toLowerCase().trim() : "";
@@ -168,8 +166,7 @@ function filtrarTablaHistorias() {
     const vTrat = inpTratamiento ? inpTratamiento.value.toLowerCase().trim() : "";
 
     const filas = document.querySelectorAll("#tablaHistorias .fila-registro");
-    
-    // Si tampoco existe la tabla de historias clínicas, detenemos la ejecución de esta función
+
     if (filas.length === 0) return;
 
     filas.forEach(function(fila) {

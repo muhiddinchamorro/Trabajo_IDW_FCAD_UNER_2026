@@ -5,7 +5,6 @@ const botonRegistrar = formularioTurno ? formularioTurno.querySelector('button[t
 
 let idTurnoEditando = null;
 
-// Generador de ID único idéntico al de Historias Clínicas
 function generarIdTurno() {
     const turnos = JSON.parse(localStorage.getItem("turnosVeterinaria")) || [];
     let id;
@@ -15,7 +14,6 @@ function generarIdTurno() {
     return id;
 }
 
-// Renderiza las filas de la tabla leyendo LocalStorage
 function mostrarTurnos() {
     if (!tablaTurnos) return;
     
@@ -61,7 +59,6 @@ function mostrarTurnos() {
     }
 }
 
-// Evento para procesar Guardado o Modificación de Registro
 if (formularioTurno) {
     formularioTurno.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -104,7 +101,6 @@ if (formularioTurno) {
     });
 }
 
-// Cargar datos al formulario para edición
 window.editarTurno = function(id) {
     const turnos = JSON.parse(localStorage.getItem("turnosVeterinaria")) || [];
     const turno = turnos.find(function(t) { return t.idTurno.toString() === id.toString(); });
@@ -127,7 +123,6 @@ window.editarTurno = function(id) {
     formularioTurno.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
-// Eliminar turno con confirmación de seguridad
 window.eliminarTurno = function(id) {
     if (!confirm("¿Estás seguro de que deseas cancelar este turno permanentemente?")) return;
 
@@ -144,7 +139,6 @@ window.eliminarTurno = function(id) {
     mostrarTurnos();
 };
 
-// Escucha en tiempo real para la barra de filtros reactivos
 document.addEventListener("DOMContentLoaded", function() {
     const inputsFiltro = ["fTurnoDueno", "fTurnoServicio", "fTurnoEspecie"];
     inputsFiltro.forEach(id => {
@@ -154,7 +148,6 @@ document.addEventListener("DOMContentLoaded", function() {
     mostrarTurnos();
 });
 
-// Algoritmo de filtrado directo por celdas
 function filtrarTablaTurnos() {
     const vDueno = document.getElementById("fTurnoDueno").value.toLowerCase().trim();
     const vServicio = document.getElementById("fTurnoServicio").value.toLowerCase().trim();
@@ -179,7 +172,6 @@ function filtrarTablaTurnos() {
     });
 }
 
-// Motor de exportación limpia e impresión PDF
 window.exportarTurnosConFiltro = function() {
     const tituloReporte = "Reporte de Agenda - Control de Turnos Solicitados";
     const tablaOriginal = document.getElementById("tablaTurnos") ? document.getElementById("tablaTurnos").closest("table") : null;

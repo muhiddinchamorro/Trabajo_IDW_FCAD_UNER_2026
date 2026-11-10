@@ -1,24 +1,23 @@
 .mainx {
-    /*;Para que la pagina tenga el mismo ancho que el contenedor padre */
     width: 100%
 }
 
  #formulario-contacto{
-   background: #ffffff; /*Fondo de formulario de color blanco*/
-   border-radius: 12px; /*Redondea las esquinas*/
-   box-shadow: 0 4px 24px rgba(0, 0, 0); /*Añade sombra al borde*/
-   padding: 2.5rem 2rem; /*Espacio interno*/
-   width: 100%;  /*Ocupe todo el ancho interno*/
-   max-width: 540px; /*Limita el ancho*/
-   margin: 0 auto; /*Margenes y centra el elemento*/
+   background: #d5bebe; 
+   border-radius: 12px; 
+   box-shadow: 0 4px 24px rgba(0, 0, 0); 
+   padding: 2.5rem 2rem; 
+   width: 100%;  
+   max-width: 540px; 
+   margin: 0 auto; 
    margin-top: 2rem;
    margin-bottom: 2rem;
 }
 
 .contenedorcampo{
-    display: flex; /*Convierte a este elemento en flexbox para poder organizarse*/
-    flex-direction: column;/*Ubica los elementos uno debajo del otro en forma de columna*/
-    margin-bottom: 1.25rem;/*Margen interno*/
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
 }
 
 .titulo{
@@ -34,30 +33,30 @@ label{
     color: #1a1a1a
 }
 input, textarea {
-    width: 100%; /*ocupa todo el ancho de su contenedor*/
+    width: 100%; /
     padding: 0.6rem 0.8rem;
     border: 1.5px;
-    border-radius: 8px;/*Redondea las esquinas*/
+    border-radius: 8px;
     background-color: #d4d3f5;
 }
 
 input:focus, textarea:focus {
-    border-color: #f10404; /*Cuando el usuario lo selecciona cambia el color de borde*/
-    box-shadow: 0 0 0 3px rgb(219, 10, 10);/*Anade una sombre para resaltar*/
+    border-color: #f10404; 
+    box-shadow: 0 0 0 3px rgb(219, 10, 10);
 }
 
 #botonenviar{
-    width: 100%;/*Ocupa todo el ancho del formulario*/
-    padding: 0.8rem; /*Espacio interno*/
+    width: 100%;
+    padding: 0.8rem; 
     background-color: #f6a76b;
     color: #1a1a1a;
     font-size: 1rem;
-    font-weight: 600;/*Facilita la lectura haciendo un texto mas marcado*/
+    font-weight: 600;
     font-family: inherit;
-    border: none;/*No tiene bordes*/
-    border-radius: 8px;/*Esquinas redondeadas*/
+    border: none;
+    border-radius: 
     cursor: pointer;
-    transition: background-color 0.2s;/*Tiempo en que tarda de cambiar de color*/
+    transition: background-color 0.2s;
     margin-top: 0.5rem;
 
 }
@@ -67,34 +66,34 @@ input:focus, textarea:focus {
 }
 
 .contacto {
-  text-align: center; /* Centra automáticamente todos los textos dentro de este bloque */
-  width: 100%;        /* Asegura que el bloque ocupe todo el ancho disponible para centrar correctamente */
-  margin-bottom: 1rem;  /* Añade un pequeño margen superior para separar del contenido anterior */
+  text-align: center; 
+  width: 100%;        
+  margin-bottom: 1rem;  
 }
 
 .contacto h1 {
-  font-weight: bold;      /* Hace el texto grueso (Bold) */
-  font-size: 32px;        /* Cambia el tamaño del título (ajústalo a tu gusto) */
-  color: #c72626;         /* Color oscuro para el título */
-  margin-bottom: 10px;    /* Separa el título de los párrafos de abajo */
+  font-weight: bold;    
+  font-size: 32px;       
+  color: #c72626;      
+  margin-bottom: 10px;    
   text-shadow: 7px 7px 7px rgba(171, 48, 48, 0.5);
 }
 
 .contacto p {
-  font-size: 16px;        /* Cambia el tamaño del texto del párrafo */
-  color: #a83434;         /* Color gris suave para que no sea tan fuerte como el título */
-  line-height: 1.6;       /* Opcional: Da un espacio elegante entre líneas de texto */
-  margin: 5px 0;          /* Reduce el espacio exagerado que los <p> traen por defecto */
+  font-size: 16px;        
+  color: #a83434;         
+  line-height: 1.6;      
+  margin: 5px 0;         
   text-shadow: 7px 7px 5px rgba(171, 48, 48, 0.5);
 }
 
 .contenedor-botones {
-  display: flex;            /* Activa el diseño flexible */
-  justify-content: center;  /* Alinea los botones desde el centro */
-  gap: 25px;                /* Controla la separación entre un botón y otro */
-  width: 100%;              /* Ocupa todo el ancho disponible */
-  flex-wrap: nowrap;        /* Obliga a que se mantengan en una sola línea */
-  margin-bottom: 15px; /* <--- Añade esto para empujar el contenido de abajo */
+  display: flex;            
+  justify-content: center;  
+  gap: 25px;               
+  width: 100%;             
+  flex-wrap: nowrap;       
+  margin-bottom: 15px; 
 
 }
 
@@ -105,10 +104,10 @@ input:focus, textarea:focus {
   border-radius: 10px;
   border: 1.1px solid #ccc5c5;
   font-weight: bold;
-  flex: 1;                  /* Hace que todos crezcan por igual hacia los lados */
-  max-width: 350px;         /* Opcional: evita que se estiren demasiado en pantallas gigantes */
-  text-align: center;       /* Centra el texto dentro del botón */
-  white-space: nowrap;      /* Evita que el texto del botón se rompa en dos líneas */
-  box-shadow: 7px 7px 11px rgba(0, 0, 0, 0.5); /* Añade una sombra sutil */
-  transition: background-color 0.3s, transform 0.2s; /* Añade una transición suave para el hover */
+  flex: 1;                  
+  max-width: 350px;        
+  text-align: center;       
+  white-space: nowrap;      
+  box-shadow: 7px 7px 11px rgba(0, 0, 0, 0.5); 
+  transition: background-color 0.3s, transform 0.2s; 
 }

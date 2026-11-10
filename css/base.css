@@ -161,59 +161,69 @@ footer {
         margin: 0.5rem 0;
     }
 }
-/* Media Query con máxima prioridad para celulares y tablets (Pantallas de 768px o menos) */
 @media screen and (max-width: 768px) {
 
-    /* 1. Forzar que APAREZCA el botón de tres líneas sí o sí */
     html body button#btn-hamburguesa.btn-hamburguesa {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
     }
 
-    /* 2. Forzar que la barra horizontal con todos los enlaces se OCULTE por defecto */
     html body nav#navegacion-principal.navegacion-principal {
         display: none !important;
         flex-direction: column !important;
         position: absolute !important;
-        top: 65px !important; /* Ajusta según el alto de tu header blanco */
+        top: 65px !important; 
         left: 0 !important;
         width: 100% !important;
         background-color: #ffffff !important;
         padding: 20px !important;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15) !important;
-        z-index: 99999 !important; /* Asegura que flote por encima del contenido de admin.html */
+        z-index: 99999 !important; 
         gap: 15px !important;
         align-items: flex-start !important;
     }
 
-    /* 3. MOSTRAR el menú vertical ÚNICAMENTE cuando se hace clic (cuando tiene la clase activa) */
     html body nav#navegacion-principal.navegacion-principal.menu-activo {
         display: flex !important;
     }
 
-    /* 4. Separador visual opcional para que los enlaces móviles se vean prolijos */
     html body nav#navegacion-principal.navegacion-principal a {
         width: 100% !important;
         padding: 10px 0 !important;
         border-bottom: 1px solid #f0f0f0 !important;
         display: block !important;
     }
-}
-/* Estilo personalizado para resaltar las tarjetas del panel */
-.card-panel-admin {
-    background-color: #e7dfea !important; /* Un gris azulado muy suave y moderno */
-    border: 1px solid #94b79a !important; /* Borde sutil para dar definición */
-    border-radius: 12px !important;       /* Esquinas un poco más redondeadas */
     
-    /* Sombra más marcada, suave y profunda */
+    html body .botones-sesion {
+        gap: 6px !important; 
+        margin-right: 10px !important; 
+    }
+
+    html body .botones-sesion a.btn-pedir-turno,
+    html body .botones-sesion a.btn-registrar {
+        padding: 6px 12px !important;  
+        font-size: 13px !important;     
+        white-space: nowrap !important;  
+    }
+
+    html body button#btn-hamburguesa.btn-hamburguesa {
+        font-size: 22px !important;     
+        padding: 4px 8px !important;    
+    }
+
+}
+.card-panel-admin {
+    background-color: #e7dfea !important; 
+    border: 1px solid #94b79a !important; 
+    border-radius: 12px !important;      
+    
     box-shadow: 15px 15px 5px -9px rgba(17, 16, 16, 0.3), 
                 15px 15px 5px -9px rgba(0, 0, 0, 0.3) !important;
     
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Efecto opcional: Al pasar el mouse por encima la tarjeta se eleva ligeramente */
 .card-panel-admin:hover {
     transform: translateY(-4px);
     box-shadow: 20px 20px 25px -5px rgba(0, 0, 0, 0.15), 

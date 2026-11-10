@@ -3,8 +3,8 @@
     flex: 1;
     padding: 3rem 1rem;
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center;     /* Centra verticalmente */
+    justify-content: center; 
+    align-items: center;     
 }
 
 .contenedor-login {

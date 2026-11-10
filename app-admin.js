@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <a href="./mascotas.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('mascotas.html')}">Mascotas</a>
                     <a href="./veterinarios.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('veterinarios.html')}">Veterinarios</a>
                     <a href="./historia_clinica.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('historia_clinica.html')}">Historias Clínicas</a>
+                    <a href="./pedirturno.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('pedirturno.html')}">Gestión de Turnos</a>
                 ` : ''}
             </nav>
 

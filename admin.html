@@ -14,94 +14,37 @@
     
     
     <style>
-        .contenedor-admin {
-            max-width: 1050px;
-            margin: 40px auto;
-            padding: 0 20px;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-        .grid-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        .card-modulo {
-            background: #ffffff;
-            border: 1px solid #eeeeee;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .card-modulo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
-            border-color: var(--color-terceario);
-        }
-        .card-icono {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--color-terceario);
-        }
-        .card-modulo h3 {
-            font-size: 1.4rem;
-            color: var(--color-primario);
-            margin: 10px 0;
-            font-weight: 700;
-        }
-        .card-modulo p {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-        @media print {
-        body > *:not(#contenedorImpresionDinamica) {
+    /* Forzar comportamiento responsivo exclusivo para pantallas móviles en admin.html */
+    @media screen and (max-width: 768px) {
+        /* 1. Forzar que se oculte la barra de enlaces estirada */
+        html body nav#navegacion-principal {
             display: none !important;
-        }
-
-        #contenedorImpresionDinamica, 
-        #contenedorImpresionDinamica * {
-            display: block !important;
-        }
-
-        body {
-            background: white;
-            color: black;
-            font-family: system-ui, sans-serif;
-            font-size: 12px;
-            margin: 0;
-            padding: 0;
-        }
-
-        table {
+            flex-direction: column !important;
+            position: absolute !important;
+            top: 70px !important; /* Ajusta según el alto de tu menú superior */
+            left: 0 !important;
             width: 100% !important;
-            border-collapse: collapse;
-            margin-top: 20px;
+            background-color: #ffffff !important;
+            padding: 20px !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+            z-index: 99999 !important;
+            gap: 12px !important;
         }
 
-        th {
-            background-color: #f8f9fa !important;
-            border-bottom: 2px solid #008F80 !important;
-            padding: 10px;
-            text-align: left;
+        /* 2. Forzar que se muestre en forma de lista solo al presionar el botón */
+        html body nav#navegacion-principal.menu-activo {
+            display: flex !important;
         }
 
-        td {
-            padding: 10px;
-            border-bottom: 1px solid #edf2f7;
+        /* 3. Forzar que aparezca el botón hamburguesa */
+        html body button#btn-hamburguesa {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
-}
-
-
+    }
     </style>
+
 </head>
 <body>
 

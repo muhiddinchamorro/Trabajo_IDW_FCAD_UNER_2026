@@ -82,6 +82,24 @@ document.addEventListener("DOMContentLoaded", function() {
             `}
         </div>
     `;
+        try {
+        const btnHamburguesa = document.getElementById('btn-hamburguesa');
+        const navPrincipal = document.getElementById('navegacion-principal');
+
+        if (btnHamburguesa && navPrincipal) {
+            btnHamburguesa.replaceWith(btnHamburguesa.cloneNode(true));
+            const btnLimpio = document.getElementById('btn-hamburguesa');
+            
+            btnLimpio.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                navPrincipal.classList.toggle('menu-activo');
+                btnLimpio.textContent = navPrincipal.classList.contains('menu-activo') ? '✖' : '☰';
+            });
+        }
+    } catch (error) {
+        console.warn("Error controlado en el menú adaptativo:", error);
+    }
 
     // Lógica interactiva para el menú responsive (Ahora sí, completamente fuera del HTML)
     const btnHamburguesa = document.getElementById('btn-hamburguesa');

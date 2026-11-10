@@ -200,3 +200,22 @@ footer {
         display: block !important;
     }
 }
+/* Estilo personalizado para resaltar las tarjetas del panel */
+.card-panel-admin {
+    background-color: #e7dfea !important; /* Un gris azulado muy suave y moderno */
+    border: 1px solid #94b79a !important; /* Borde sutil para dar definición */
+    border-radius: 12px !important;       /* Esquinas un poco más redondeadas */
+    
+    /* Sombra más marcada, suave y profunda */
+    box-shadow: 15px 15px 5px -9px rgba(17, 16, 16, 0.3), 
+                15px 15px 5px -9px rgba(0, 0, 0, 0.3) !important;
+    
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto opcional: Al pasar el mouse por encima la tarjeta se eleva ligeramente */
+.card-panel-admin:hover {
+    transform: translateY(-4px);
+    box-shadow: 20px 20px 25px -5px rgba(0, 0, 0, 0.15), 
+                20px 10px 10px -5px rgba(0, 0, 0, 0.1) !important;
+}

@@ -161,7 +161,6 @@ footer {
         margin: 0.5rem 0;
     }
 }
-/* Media Query para pantallas de celular o tablet (menos de 768px) */
 @media (max-width: 768px) {
     #btn-hamburguesa {
         display: block !important; /* Muestra el botón de tres líneas */

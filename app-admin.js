@@ -47,52 +47,53 @@ document.addEventListener("DOMContentLoaded", function() {
                 : 'text-decoration: none; color: #4a5568; font-weight: 500;';
         };
 
-        contenedorHeader.innerHTML = `
-            <div class="logo-seccion" style="display: flex; align-items: center; gap: 12px;">
-                <img src="./asset/images/icono.png" alt="Logo de la veterinaria" class="logo-veterinaria" style="width: 45px; height: 45px; object-fit: contain;" onerror="this.style.display='none'">
-                <span class="logo-texto" style="font-weight: 700; color: #2d3748; font-size: 1.3rem;">La Mary</span>
-            </div>
+    // Reemplaza desde donde empieza 'contenedorHeader.innerHTML = `' hasta el final de la div de botones:
+    contenedorHeader.innerHTML = `
+        <div class="logo-seccion" style="display: flex; align-items: center; gap: 12px;">
+            <img src="./asset/images/icono.png" alt="Logo de la veterinaria" class="logo-veterinaria" style="width: 45px;">
+            <span class="logo-texto" style="font-weight: 700; color: #2d3748; font-size: 1.3rem;">La Mary</span>
+        </div>
 
-                    <!-- Botón Hamburguesa (Solo visible en móviles) -->
-            <button id="btn-hamburguesa" class="btn-hamburguesa" aria-label="Abrir menú" style="display: none; background: none; border: none; font-size: 28px; cursor: pointer; color: #2d3748;">
-                ☰
-            </button>
+        <!-- Botón Hamburguesa (Solo visible en móviles) -->
+        <button id="btn-hamburguesa" class="btn-hamburguesa" aria-label="Abrir menú" style="display: none; background: none; border: none; font-size: 28px; cursor: pointer; color: #2d3748;">
+            ☰
+        </button>
 
-            <nav id="navegacion-principal" class="navegacion-principal" style="display: flex; gap: 25px; align-items: center;">
-                <a href="./index.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('index.html')}">Inicio</a>
-                <a href="./institucional.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('institucional.html')}">Institucional</a>
-                <a href="./contacto.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('contacto.html')}">Contacto</a>
-                
-                ${mostrarMenuPrivado ? `
-                    <a href="./admin.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('admin.html', true)}">Panel Admin</a>
-                    <a href="./mascotas.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('mascotas.html')}">Mascotas</a>
-                    <a href="./veterinarios.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('veterinarios.html')}">Veterinarios</a>
-                    <a href="./historia_clinica.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('historia_clinica.html')}">Historias Clínicas</a>
-                    <a href="./pedirturno.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('pedirturno.html')}">Gestión Turnos</a>
-                ` : ''}
-            </nav>
-                // Lógica interactiva para el menú responsive
-                const btnHamburguesa = document.getElementById('btn-hamburguesa');
-                const navPrincipal = document.getElementById('navegacion-principal');
+        <nav id="navegacion-principal" class="navegacion-principal" style="display: flex; gap: 25px; align-items: center;">
+            <a href="./index.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('index.html')}">Inicio</a>
+            <a href="./institucional.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('institucional.html')}">Institucional</a>
+            <a href="./contacto.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('contacto.html')}">Contacto</a>
+            
+            ${mostrarMenuPrivado ? `
+                <a href="./admin.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('admin.html', true)}">Panel Admin</a>
+                <a href="./mascotas.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('mascotas.html')}">Mascotas</a>
+                <a href="./veterinarios.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('veterinarios.html')}">Veterinarios</a>
+                <a href="./historia_clinica.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('historia_clinica.html')}">Historias Clínicas</a>
+                <a href="./pedirturno.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('pedirturno.html')}">Gestión Turnos</a>
+            ` : ''}
+        </nav>
 
-                if (btnHamburguesa && navPrincipal) {
-                    btnHamburguesa.addEventListener('click', () => {
-                        navPrincipal.classList.toggle('menu-activo');
-                        // Cambia el ícono entre barra y cruz
-                        btnHamburguesa.textContent = navPrincipal.classList.contains('menu-activo') ? '✖' : '☰';
-                    });
-                }
+        <div class="botones-sesion" style="display: flex; align-items: center; gap: 12px;">
+            ${mostrarMenuPrivado ? `
+                <a href="./pedirturno.html" class="btn-pedir-turno" style="background-color: #f17e6d; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: bold;">Pedir turno</a>
+                <a href="#" id="btn-logout" class="btn-registrar" style="text-decoration: none; display: inline-block; background-color: #008F80; color: white; padding: 8px 16px; border-radius: 4px;">Cerrar Sesión</a>
+            ` : `
+                <a href="./login.html" class="btn-registrar" style="text-decoration: none; display: inline-block; background-color: #008F80; color: white; padding: 8px 16px; border-radius: 4px;">Iniciar Sesión</a>
+            `}
+        </div>
+    `;
 
+    // Lógica interactiva para el menú responsive (Ahora sí, completamente fuera del HTML)
+    const btnHamburguesa = document.getElementById('btn-hamburguesa');
+    const navPrincipal = document.getElementById('navegacion-principal');
 
-            <div class="botones-sesion" style="display: flex; align-items: center; gap: 12px;">
-                ${mostrarMenuPrivado ? `
-                    <a href="./turnos.html" class="btn-pedir-turno" style="background-color: #f17e6d; color: white; padding: 12px 30px; border-radius: 30px; font-weight: 700; text-decoration: none; display: inline-block;">Pedir turno</a>
-                    <a href="#" id="btn-logout" class="btn-registrar" style="text-decoration: none; display: inline-block; background-color: #008F80; color: white; padding: 12px 30px; border-radius: 30px; font-weight: 700;">Cerrar Sesión</a>
-                ` : `
-                    <a href="./login.html" class="btn-registrar" style="text-decoration: none; display: inline-block; background-color: #008F80; color: white; padding: 12px 30px; border-radius: 30px; font-weight: 700;">Iniciar Sesión</a>
-                `}
-            </div>
-        `;
+    if (btnHamburguesa && navPrincipal) {
+        btnHamburguesa.addEventListener('click', () => {
+            navPrincipal.classList.toggle('menu-activo');
+            btnHamburguesa.textContent = navPrincipal.classList.contains('menu-activo') ? '✖' : '☰';
+        });
+    }
+
 
         const botonLogout = document.getElementById('btn-logout');
         if (botonLogout) {

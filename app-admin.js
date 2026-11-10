@@ -156,12 +156,18 @@ function filtrarTablaHistorias() {
     const inpDiag = document.getElementById("fHistDiag");
     const inpTratamiento = document.getElementById("fHistTratamiento");
 
+    // Guardas de seguridad: Si no existen estos inputs en la página (como en admin.html), salimos sin romper nada
+    if (!inpMascota && !inpSintomas && !inpDiag && !inpTratamiento) return;
+
     const vMascota = inpMascota ? inpMascota.value.toLowerCase().trim() : "";
     const vSintomas = inpSintomas ? inpSintomas.value.toLowerCase().trim() : "";
     const vDiag = inpDiag ? inpDiag.value.toLowerCase().trim() : "";
     const vTrat = inpTratamiento ? inpTratamiento.value.toLowerCase().trim() : "";
 
     const filas = document.querySelectorAll("#tablaHistorias .fila-registro");
+    
+    // Si tampoco existe la tabla de historias clínicas, detenemos la ejecución de esta función
+    if (filas.length === 0) return;
 
     filas.forEach(function(fila) {
         if (!fila.cells || fila.cells.length < 5) return;
@@ -183,6 +189,7 @@ function filtrarTablaHistorias() {
         }
     });
 }
+
 
 window.exportarSeccionConFiltro = function(seccion) {
     let tituloReporte = "";

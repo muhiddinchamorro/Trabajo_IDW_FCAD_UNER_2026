@@ -112,43 +112,46 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     }
-
-    if (typeof mostrarHistorias === "function") {
-        mostrarHistorias();
-    }
-
-    const idsInputs = ["fHistMascota", "fHistSintomas", "fHistDiag", "fHistTratamiento"];
-    idsInputs.forEach(function(id) {
-        const el = document.getElementById(id);
-        if (el) {
-            el.addEventListener("input", filtrarTablaHistorias);
+    // REEMPLAZAR DESDE LA LÍNEA 116 HASTA EL FINAL DE TU ARCHIVO POR ESTO:
+    if (urlActual === 'historia_clinica.html') {
+        if (typeof mostrarHistorias === "function") {
+            mostrarHistorias();
         }
-    });
 
-    const btnLimpiar = document.getElementById("btnLimpiarHistorias");
-    if (btnLimpiar) {
-        btnLimpiar.addEventListener("click", function(e) {
-            e.preventDefault();
-            idsInputs.forEach(function(id) {
-                const el = document.getElementById(id);
-                if (el) el.value = "";
-            });
-            filtrarTablaHistorias(); 
+        const idsInputs = ["fHistMascota", "fHistSintomas", "fHistDiag", "fHistTratamiento"];
+        idsInputs.forEach(function(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener("input", filtrarTablaHistorias);
+            }
         });
-    }
 
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('modo') === 'filtrar') {
-        const panelFiltros = document.querySelector('[class^="panel-filtros-"]');
-        if (panelFiltros) {
-            panelFiltros.scrollIntoView({ behavior: 'smooth' });
+        const btnLimpiar = document.getElementById("btnLimpiarHistorias");
+        if (btnLimpiar) {
+            btnLimpiar.addEventListener("click", function(e) {
+                e.preventDefault();
+                idsInputs.forEach(function(id) {
+                    const el = document.getElementById(id);
+                    if (el) el.value = "";
+                });
+                filtrarTablaHistorias(); 
+            });
         }
-        const primerInput = document.getElementById("fHistMascota");
-        if (primerInput) {
-            primerInput.focus();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('modo') === 'filtrar') {
+            const panelFiltros = document.querySelector('[class^="panel-filtros-"]');
+            if (panelFiltros) {
+                panelFiltros.scrollIntoView({ behavior: 'smooth' });
+            }
+            const primerInput = document.getElementById("fHistMascota");
+            if (primerInput) {
+                primerInput.focus();
+            }
         }
-    }
-});
+    } // Fin de la protección para historia_clinica.html
+}); // Este es el cierre definitivo del DOMContentLoaded (última línea)
+
 
 function filtrarTablaHistorias() {
     const inpMascota = document.getElementById("fHistMascota");

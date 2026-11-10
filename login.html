@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app-admin.js"></script>
+    <script src="historia_clinica.js"></script>
+    <title>Iniciar Sesión - LA MARY</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+
+<body>
+    <header id="global-header"></header>
+
+    <main class="mainx">
+        <div class="contenedor-login">
+            <div class="contacto">
+                <h1>Iniciar Sesión</h1>
+                <p>Ingresa tus credenciales para acceder al sistema.</p>
+            </div>
+
+            <form id="formulario-contacto" class="formulario-login">
+                <div class="contenedorcampo">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" placeholder="Ej. mramirez" required>
+                </div>
+
+                <div class="contenedorcampo">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" placeholder="Ej. 134679" required>
+                </div>
+                <button type="submit" id="botonenviar">Ingresar</button>
+                
+                <div id="mensaje-estado" class="mensaje-estado"></div>
+
+                        <div id="bloqueo-pantalla" class="bloqueo-overlay">
+                <div class="bloqueo-cuadro">
+                    <div class="bloqueo-icono">🔒</div>
+                    <h2>Acceso Restringido</h2>
+                    <p id="bloqueo-texto-reloj">Has superado los intentos permitidos.</p>
+                </div>
+        </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-marca">
+            <span>La Mary</span>
+            <p>Av. Siempre Viva 1234, Concordia, Entre Ríos.</p>
+            <p>Lunes a sábado. Urgencias 24 h.</p>
+        </div>
+        <div class="footer-seccion">
+            <span>SECCIONES</span>
+            <a href="institucional.html">Institucional</a>
+            <a href="index.html">Inicio</a>
+            <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="footer-seccion">
+            <span>SEGUINOS</span>
+            <a href="#" target="_blank">Instagram: @lamaryveteri</a>
+            <a href="#" target="_blank">Facebook: Lamaryveteri</a>
+            <a href="#" target="_blank">TikTok: @veterilamary</a>
+        </div>
+    </footer>
+
+    <script src="login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

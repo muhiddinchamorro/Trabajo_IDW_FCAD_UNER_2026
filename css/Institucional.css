@@ -1,0 +1,153 @@
+:root {
+    --color-fondo: #f7f9f9;
+    --color-pilar: #a8c0c0; 
+    --color-tarjeta-vet: #b3c7c7; /* para el equipo */
+    --color-texto-oscuro: #2c3e50;
+    --color-blanco: #ffffff;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-oscuro);
+}
+
+.main-institucional {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.hero-historia {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+}
+
+.hero-texto {
+    flex: 1 1 400px;
+}
+
+.hero-texto h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.hero-texto p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.hero-imagen {
+    flex: 1 1 400px;
+}
+
+.hero-imagen img {
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/*Pilares */
+.seccion-pilares h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.grid-pilares {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.card-pilar {
+    background-color: var(--color-pilar);
+    color: var(--color-blanco);
+    padding: 2.5rem 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.card-pilar:hover {
+    transform: translateY(-5px);
+}
+
+.numero-pilar {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.card-pilar p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/*Equipo*/
+.seccion-equipo h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.subtitulo-equipo {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 5rem; 
+}
+
+.grid-equipo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    row-gap: 6rem; 
+}
+
+.card-especialista {
+    background-color: var(--color-tarjeta-vet);
+    color: var(--color-blanco);
+    border-radius: 1rem;
+    padding: 5rem 1.5rem 2rem;
+    position: relative; 
+    text-align: left;
+}
+
+.foto-wrapper {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 6px solid var(--color-fondo);
+    position: absolute;
+    top: -70px; 
+    left: 1.5rem;
+    overflow: hidden;
+    background-color: var(--color-blanco);
+}
+
+.foto-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-especialista h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.info-especialista p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}

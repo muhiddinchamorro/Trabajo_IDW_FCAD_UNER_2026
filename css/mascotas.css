@@ -1,0 +1,193 @@
+
+.formulario-mascotas {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.formulario-mascotas h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    margin-bottom: 8px;
+}
+
+.formulario-mascotas .subtitulo {
+    color: #666;
+    margin-bottom: 28px;
+}
+
+.formulario-mascotas .form-label {
+    font-weight: 600;
+    color: var(--color-primario);
+    margin-bottom: 8px;
+}
+
+.formulario-mascotas .form-control {
+    background-color: #f5f5f5;
+    border: 1px solid transparent;
+    border-radius: 25px;
+    padding: 12px 18px;
+    min-height: 48px;
+}
+
+.formulario-mascotas .form-control:focus {
+    background-color: #fff;
+    border-color: var(--color-terceario);
+    box-shadow: 0 0 0 3px rgb(45 151 142 / 15%);
+}
+
+.btn-registrar {
+    background-color: var(--color-terceario);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-weight: 700;
+}
+
+.btn-registrar:hover {
+    background-color: #247c75;
+    color: white;
+}
+
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 2px;
+}
+
+.section-divider h2 {
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--color-primario);
+}
+
+.section-divider p {
+    font-size: 1.15rem;
+    margin: 0;
+    color: var(--color-texto);
+}
+
+.colores {
+    color: var(--color-primario);
+}
+
+.listado-mascotas thead{
+    background-color: var(--color-primario); 
+    color: var(--color-primario);
+}
+
+.estilo-tabla th {
+    background-color: var(--color-secundario) !important;
+    color: white; 
+    font-weight: 600;
+    padding: 14px; 
+}
+
+
+
+.acciones-mascota {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-accion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border: 1px solid var(--color-terceario);
+    border-radius: 8px;
+    background-color: var(--color-terceario);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.btn-accion:hover {
+    background-color: #008F80;
+    border-color: #008F80;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 168, 150, 0.25);
+}
+
+.btn-accion:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn-accion:focus-visible {
+    outline: 3px solid rgba(0, 168, 150, 0.35);
+    outline-offset: 3px;
+}
+
+
+@media (max-width: 576px) {
+    .acciones-mascota {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-accion {
+        width: 100%;
+    }
+}
+@media print {
+    body > *:not(#contenedorImpresionDinamica) {
+        display: none !important;
+    }
+    
+    #contenedorImpresionDinamica {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    #contenedorImpresionDinamica table {
+        display: table !important;
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin-top: 20px !important;
+    }
+
+    #contenedorImpresionDinamica tr {
+        display: table-row !important;
+    }
+
+    #contenedorImpresionDinamica th {
+        display: table-cell !important;
+        background-color: #f8f9fa !important;
+        color: #008F80 !important;
+        font-weight: bold !important;
+        border-bottom: 2px solid #008F80 !important;
+        padding: 10px !important;
+        text-align: left !important;
+    }
+
+    #contenedorImpresionDinamica td {
+        display: table-cell !important;
+        padding: 10px !important;
+        border-bottom: 1px solid #edf2f7 !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+        font-family: system-ui, -apple-system, sans-serif !important;
+        font-size: 13px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./app-admin.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/formularios.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/contacto.css">
+    <link rel="icon" type="image/png" href="./asset/images/icono.png">
+    <title>Contacto - LA MARY</title>
+</head>
+
+<body>
+
+   <header id="global-header"></header>
+
+    <main class = "w-100" >
+        <p class="text-center  fw-semibold fs-4 ">Contacto</p>    
+
+        <div class="container">
+          <div class="mx-auto ">
+            <form id="formulario-contacto" >
+              <fieldset class=" p-4  rounded-4 w-100 w-md-75 mx-auto mx-0">
+                   <legend class="btn-danger">Ingrese sus datos: </legend>
+                       <div  >
+                          <label for="nombre" class="form-label">Nombre:</label>
+                          <input type="text" id="nombre" name="nombre" class="form-control" required placeholder="Ingrese su nombre">
+                       </div>
+                       <div  >
+                            <label for="email">Correo Electrónico:</label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="Ingrese su correo. Ejemplo : mario2026@gmail.com">
+                       </div>
+                        <div >
+                             <label for="mensaje">Mensaje:</label>
+                             <textarea id="mensaje" name="mensaje" rows="4" class="form-control" required placeholder="Ingrese su consulta"></textarea>
+                       </div>
+                       <div class="d-flex justify-content-center ">
+                         <button type="submit" id="botonconsultar" class="btn btn-outline-danger w-50 mt-5">Consultar</button>
+                       </div>
+                       
+              </fieldset>
+            </form>
+
+          </div>
+        </div>
+        
+           
+    
+
+        <div class="container ">
+          <div class="d-flex flex-column align-items-center mt-5">
+                 <h1 class="fw-semibold fs-4">Para Contactarnos</h1>
+                 <p class="text-center">Av. Siempre Viva 1234, Concordia, Entre Ríos. Lunes a sábado. Urgencias 24 h.</p>
+                 <p class="text-center">Teléfono: +54 345 123456</p>
+          </div>
+         
+        </div>
+
+        <div class="container ">
+          <div class="row justify-content-center gap-2 my-5">
+            <div class="boton col 12 col-md-3 ">Email = info@lamaryveteri.com</div>
+            <div class="boton col 12 col-md-3 ">Instagram = @lamaryveteri</div> 
+            <div class="boton col 12 col-md-3 ">Facebook = Lamaryveteri</div>
+            <div class="boton col 12 col-md-3 ">TikTok = @@veterilamary</div>
+          </div>
+           
+        </div>
+
+
+        </nav>      
+    </main>  
+
+    <footer>
+       <div class="footer-marca">
+            <span>La Mary</span>
+            <p class="text-center">Av. Siempre Viva 1234, Concordia, Entre Ríos. <br>Lunes a sábado. Urgencias 24 h.</p>
+       </div>
+
+      <div class="footer-seccion">
+            <span>SECCIONES</span>
+            <a href="Institucional.html">Institucional</a>
+            <a class="active" href="index.html">Inicio</a>
+            <a href="contacto.html">Contacto</a>
+       </div>
+
+
+       <div class="footer-seccion">
+            <span>SEGUINOS</span>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+       </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+:root {
+    --color-primario: #1A2B3C;
+    --color-secundario: #ee7f75;
+    --color-terceario: #00A896; 
+    --color-fondo-header: #ffffff;
+    --color-texto: #5A6578;
+}
+
+@font-face {
+    font-family: PlayfairDisplay;
+    src: url("../asset/font/PlayfairDisplay-Italic-VariableFont_wght.ttf");
+    font-weight: 200 800;
+    font-style: italic;
+}
+
+
+
+.header {
+    background-color: var(--color-fondo-header);
+    
+}
+.header nav {
+    display: flex ;
+    flex-direction: row ;
+    justify-content: space-between ;
+    align-items: center ;
+    width: 100%;
+}
+
+.logo {
+    display: inline-block;
+    width: 150px ;
+}
+
+.icono-imagen-css {
+    max-width: 180px;   
+    height: auto;              
+}
+
+.icono-imagen-css img {
+    width: 100%;
+    height: auto;
+    display:block;       
+}
+
+.navegacion {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+.navegacion a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    color: var(--color-texto);
+    position: relative;
+}
+
+
+.navegacion a:hover,
+.navegacion a.active {
+    color: var(--color-terceario);
+    border-bottom: 2px solid; 
+}
+
+
+.btn-turno {
+    background-color: var(--color-secundario);
+    color: #ffffff;
+    padding: 0.6rem 1.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px; 
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-turno:hover {
+    background-color: var(--color-terceario);
+    color: #ffffff;
+    transform: scale(1.03); 
+}
+
+.btn-login-posicion {
+    background-color: var(--color-terceario);
+    color: #ffffff;
+    padding: 0.6rem 1.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 25px; 
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-login-posicion:hover {
+    background-color: var(--color-terceario);
+    color: #ffffff;
+    transform: scale(1.03); 
+}
+
+footer {
+    background-color: var(--color-fondo-header);
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-top: 4px solid var(--color-secundario); 
+}
+
+.footer-marca span,
+.footer-seccion span {
+    color: var(--color-secundario);
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 1.2rem;
+    text-transform: uppercase;
+}
+
+.footer-marca p {
+    max-width: 300px;
+    color: var(--color-primario);
+    line-height: 1.6;
+}
+
+.footer-seccion a {
+    color: var(--color-primario);
+    display: block;
+    margin-bottom: 0.8rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+}
+
+.footer-seccion a:hover {
+    color: var(--color-secundario);
+    transform: translateX(5px);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #ffffff; 
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .navegacion {
+        flex-direction: column !important; 
+        padding-left: 0;
+    }
+
+    .navegacion li {
+        margin: 0.5rem 0;
+    }
+}

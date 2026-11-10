@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app-admin.js"></script>
+    <link rel="stylesheet" href="./estilos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/formularios.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/mascotas.css">
+    <link rel="icon" type="image/png" href="./asset/images/icono.png">
+    <title>Mascotas</title>
+</head>
+<body>
+    <header id="global-header"></header>
+    
+    <main class="container my-5">
+        <section class="formulario-mascotas">
+            <div class="section-divider text-center">
+                <h1 >Administrar mascotas</h1>
+            </div>
+            
+            <p class="subtitulo text-center">
+                Completá los datos para registrar una mascota.
+            </p>
+
+            <form id="formularioMascota">
+                <div class="row g-4">
+
+                    <div class="col-12 col-md-6">
+                        <label for="nombreMascota" class="form-label">
+                            Nombre de la mascota
+                        </label>
+                        <input type="text" class="form-control"
+                            id="nombreMascota" name="nombreMascota"
+                            placeholder="Milo" required>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="nombreDuenio" class="form-label">
+                            Nombre del dueño
+                        </label>
+                        <input type="text" class="form-control"
+                            id="nombreDuenio" name="nombreDuenio"
+                            placeholder="Juan Pérez" required>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="colorMascota" class="form-label">Color</label>
+                        <input type="text" class="form-control"
+                            id="colorMascota" name="color"
+                            placeholder="Marrón" required>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="edadMascota" class="form-label">Edad (años)</label>
+                        <input type="number" class="form-control"
+                            id="edadMascota" name="edad"
+                            min="0" step="1" placeholder="3" required>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="pesoMascota" class="form-label">Peso (kg)</label>
+                        <input type="number" class="form-control"
+                            id="pesoMascota" name="peso"
+                            min="0.01" step="0.01"
+                            placeholder="12" required>
+                    </div>
+
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 20px;">
+                    <button type="submit" class="btn btn-registrar">
+                        Registrar mascota
+                    </button>
+                    <a href="./admin.html" class="btn-volver" style="text-decoration: none; padding: 10px 20px; background-color: #6c757d; color: white; border-radius: 20px; font-weight: bold;">
+                        Volver al panel
+                    </a>
+                </div>
+            </form>
+        </section>
+    </main>
+    <section class="listado-mascotas formulario-mascotas mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h4 m-0 fw-bold section-divider text-center colores">Mascotas Registradas</h2>
+                
+                <p class="m-0 fw-bold fs-5 colores">Total de mascotas: <span id="totalMascotas" class="badge bg-secondary">0</span></p>
+            </div>
+            
+            <div class="panel-filtros-mascotas" style="display: flex; gap: 15px; background: #f8f9fa; padding: 15px; border-radius: 12px; margin-bottom: 20px; align-items: flex-end; flex-wrap: wrap; border: 1px solid #edf2f7;">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 13px; font-weight: 600; color: #4a5568;">Mascota:</label>
+                    <input type="text" id="fMascotaNombre" placeholder="Buscar nombre..." style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 8px; outline: none; font-size: 14px;">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 13px; font-weight: 600; color: #4a5568;">Dueño:</label>
+                    <input type="text" id="fMascotaDuenio" placeholder="Buscar dueño..." style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 8px; outline: none; font-size: 14px;">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 13px; font-weight: 600; color: #4a5568;">Color:</label>
+                    <input type="text" id="fMascotaColor" placeholder="Ej: marrón..." style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 8px; outline: none; font-size: 14px;">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 13px; font-weight: 600; color: #4a5568;">Edad:</label>
+                    <input type="number" id="fMascotaEdad" placeholder="Años..." style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 8px; outline: none; font-size: 14px; width: 80px;">
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-size: 13px; font-weight: 600; color: #4a5568;">Peso Máx (kg):</label>
+                    <input type="number" id="fMascotaPeso" placeholder="Ej: 5..." style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 8px; outline: none; font-size: 14px; width: 90px;">
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 10px; width: 100%; justify-content: flex-end;">
+    
+                <button id="btnLimpiarMascotas" style="padding: 8px 15px; background: #e2e8f0; color: #4a5568; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px;">
+                    🔄 Limpiar Filtros
+                </button>
+
+                <button onclick="exportarSeccionConFiltro('mascotas')" style="padding: 8px 15px; background: #343a40; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; display: inline-flex; align-items: center; gap: 5px;">
+                    🖨️ Imprimir Reporte PDF
+                </button>
+
+                </div>
+            </div>
+
+            
+            <div class="table-responsive shadow-sm rounded-3 mb-4 estilo-tabla">
+                <table class="table table-hover align-middle m-0  ">
+                    <thead class="text-center">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Mascota</th>
+                            <th scope="col">Dueño</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Edad (años)</th>
+                            <th scope="col">Peso (kg)</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody id="tablaMascotas" class="text-center">
+                        
+                    </tbody>
+                </table>
+            </div>
+    </section>
+    <footer>
+       <div class="footer-marca">
+            <span>La Mary</span>
+            <p>Av. Siempre Viva 1234, Concordia, Entre Ríos. <br>Lunes a sábado. Urgencias 24 h.</p>
+       </div>
+
+      <div class="footer-seccion">
+            <span>SECCIONES</span>
+            <a href="Institucional.html">Institucional</a>
+            <a class="active" href="index.html">Inicio</a>
+            <a href="contacto.html">Contacto</a>
+       </div>
+
+
+       <div class="footer-seccion">
+            <span>SEGUINOS</span>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+       </div>
+    </footer>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./mascotas.js"></script>
+    <div id="contenedorImpresionDinamica"></div>
+</body>
+</html>

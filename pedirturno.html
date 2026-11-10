@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/formularios.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="icon" type="image/png" href="./asset/images/icono.png">
+    <title>Contacto - LA MARY</title>
+</head>
+
+<body>
+
+    <header class="header container-fluid px-4 py-2">
+        <nav class="navbar navbar-expand-lg d-flex justify-content-between align-items-center">
+            <!-- Logo -->
+            <a href="./index.html" class="logo navbar-brand m-0">
+                <div class="icono-imagen-css">
+                    <img src="./asset/images/imagen.png" alt="Logo de la veterinaria">
+                </div>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between align-items-center w-100" id="menuNavegacion">
+                <ul class="navegacion d-flex align-items-center list-unstyled m-0 fz-1rem mx-auto my-3 my-lg-0">
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="./Institucional.html">Institucional</a></li>
+                    <li><a href="./contacto.html" class="active">Contacto</a></li>
+                </ul>
+
+                <div class="boton-container text-center">
+                    <a href="./pedirturno.html" class="btn-turno">Pedir turno</a>
+                    <a href="./login.html" class="btn-turno btn-login-posicion">Iniciar Sesión</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class = "w-100" >
+        <p class="text-center  fw-semibold fs-4 ">Solicitud de turno</p>    
+
+        <div class="container">
+          <div class="mx-auto ">
+            <form id="formulario-contacto2 " >
+              <fieldset class=" row border rounded-4 p-3 bg-light  mb-4">
+                   <legend class="btn-danger">Datos de la solicitud: </legend>
+                       <div  class="col-12 col-md-6" >
+                          <label for="servicio" class="form-label">Servicio:</label>
+                          <select name="servicios" id="servicios" class="form-select">
+                               <option value="">Atencion medica</option>
+                               <option value="">Vacunacion</option>
+                               <option value="">Cirugia</option>
+                               <option value="">Desparacitacion</option>
+                               <option value="">Asesoramiento nutricional</option>
+                          </select>
+                       </div> 
+                       <div  class="col-12 col-md-6"  >
+                          <label for="nombre" class="form-label">Nombre de dueño:</label>
+                          <input type="text" id="nombredueño" name="nombredueño" class="form-control" required placeholder="Ingrese su nombre">
+                       </div>
+                       <div  class="col-12 col-md-6" >
+                          <label for="nombre" class="form-label">Especie:</label>
+                              <select name="especie" id="especie" class="form-select">
+                               <option value="perro">Perro</option>
+                               <option value="gato">Gato</option>
+                               <option value="roedor">Roedor</option>
+                               <option value="ave">Ave</option>
+                               <option value="reptil_a">Reptil / Anfivio</option>
+                               <option value="pez">Pez</option>
+                               <option value="produccion">Animal de produccion (vaca, cerdo, gallina)</option>
+                               <option value="otro">Otro</option>
+                          </select>
+                       </div>
+                       <div  class="col-12 col-md-6" >
+                            <label for="email">Correo Electrónico:</label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="Ingrese su correo. Ejemplo : mario2026@gmail.com">
+                       </div>
+                </fieldset>       
+
+                <fieldset  class=" row border rounded-4 p-3 bg-light mb-4  ">
+                    <legend class="btn-danger">Reserva de fecha y horario: </legend>    
+                       <p >Horarios de atencion</p>
+                       <p >Lunes a Viernes de 08:00 a 20:00 hs</p>
+                       <p >Sabado de 09:00 a 13:00 hs</p>
+                        <div  class="col-12 col-md-6">
+                              <label for="fecha" class="form-label">Fecha :</label>
+                              <input type="date" id="fecha" name="fecha" required class="form-control">
+                        </div>
+                         <div  class="col-12 col-md-6" >
+                              <label for="hora" class="form-label">Hora :</label>
+                              <input type="time" id="time" name="time" min="08:00" max="19:00" required class="form-control">
+                        </div>
+                </fieldset>
+
+                <fieldset class=" row border rounded-4 p-3 bg-light mb-4">
+                <legend class="btn-danger">Informacion complementaria: </legend>
+                        <div class="col-12 col-md-6">
+                             <textarea id="mensaje" name="mensaje" rows="4" class="form-control rounded-4" required placeholder="Informacion adicional"></textarea>
+                       </div>
+                       <div class="d-flex justify-content-center col-12 col-md-6">
+                         <button type="submit" id="pedirturno" class="btn btn-outline-danger w-50 mt-5">Pedir Turno</button>
+                       </div>
+                       
+                </fieldset>
+            </form>
+
+          </div>
+        </div>
+        
+           
+    
+
+        <div class="container ">
+          <div class="d-flex flex-column align-items-center mt-5">
+                 <h1 class="fw-semibold fs-4">Para Contactarnos</h1>
+                 <p class="text-center">Av. Siempre Viva 1234, Concordia, Entre Ríos. Lunes a sábado. Urgencias 24 h.</p>
+                 <p class="text-center">Teléfono: +54 345 123456</p>
+          </div>
+         
+        </div>
+
+        <div class="container ">
+          <div class="row justify-content-center gap-2 my-5">
+            <div class="boton col 12 col-md-3 ">Email = info@lamaryveteri.com</div>
+            <div class="boton col 12 col-md-3 ">Instagram = @lamaryveteri</div> 
+            <div class="boton col 12 col-md-3 ">Facebook = Lamaryveteri</div>
+            <div class="boton col 12 col-md-3 ">TikTok = @@veterilamary</div>
+          </div>
+           
+        </div>
+
+
+        </nav>      
+    </main>  
+
+    <footer>
+       <div class="footer-marca">
+            <span>La Mary</span>
+            <p class="text-center">Av. Siempre Viva 1234, Concordia, Entre Ríos. <br>Lunes a sábado. Urgencias 24 h.</p>
+       </div>
+
+      <div class="footer-seccion">
+            <span>SECCIONES</span>
+            <a href="Institucional.html">Institucional</a>
+            <a class="active" href="index.html">Inicio</a>
+            <a href="contacto.html">Contacto</a>
+       </div>
+
+
+       <div class="footer-seccion">
+            <span>SEGUINOS</span>
+            <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+            <a href="https://www.tiktok.com/" target="_blank">TikTok</a>
+       </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

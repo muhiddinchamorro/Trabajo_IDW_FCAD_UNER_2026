@@ -1,0 +1,29 @@
+:root {
+    --color-primario: #1a1a1a;
+    --color-secundario: #a34e0c;
+    --color-terceario: #55e6d9; 
+
+    --color-texto: #fff;
+}
+
+
+
+.boton {
+  color: var(--color-secundario);
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;  
+  width: auto;
+}
+
+.boton:hover {
+    color: var(--color-primario);
+}
+
+.form-control:hover{
+background-color: #ebe7e7;
+}
+
+.form-control:focus{
+    border-color: var(--color-secundario);
+}

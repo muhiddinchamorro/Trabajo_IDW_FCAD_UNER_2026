@@ -161,7 +161,7 @@ footer {
         margin: 0.5rem 0;
     }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
 
     html body button#btn-hamburguesa.btn-hamburguesa {
         display: block !important;
@@ -228,4 +228,57 @@ footer {
     transform: translateY(-4px);
     box-shadow: 20px 20px 25px -5px rgba(0, 0, 0, 0.15), 
                 20px 10px 10px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.nav-link-dinamico {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a5568;
+    text-decoration: none;
+    padding-bottom: 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-link-dinamico:hover,
+.nav-link-dinamico.activo {
+    color: #008F80;
+    border-bottom-color: #008F80;
+}
+
+.nav-link-dinamico.activo {
+    font-weight: 600;
+}
+
+/* Botones de sesión dentro del menú hamburguesa (solo celular) */
+.botones-sesion-movil {
+    display: none;
+}
+
+@media screen and (max-width: 1200px) {
+    html body .botones-sesion {
+        display: none !important;
+    }
+
+    html body nav#navegacion-principal.navegacion-principal {
+        top: 100% !important;
+    }
+
+    html body nav#navegacion-principal.navegacion-principal .botones-sesion-movil {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin-top: 8px !important;
+    }
+
+    html body nav#navegacion-principal.navegacion-principal .botones-sesion-movil a {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        padding: 10px 16px !important;
+        border-bottom: none !important;
+        border-radius: 20px !important;
+        color: #ffffff !important;
+    }
 }

@@ -9,33 +9,59 @@
     <link rel="stylesheet" href="./css/formularios.css">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="icon" type="image/png" href="./asset/images/icono.png">
-    <title>Contacto - LA MARY</title>
+    <title>Turnos - LA MARY</title>
+
+    <style>
+        @media print {
+            body > *:not(#contenedorImpresionDinamica) {
+                display: none !important;
+            }
+
+            #contenedorImpresionDinamica {
+                display: block !important;
+                width: 100% !important;
+            }
+
+            #contenedorImpresionDinamica table {
+                display: table !important;
+                width: 100% !important;
+                border-collapse: collapse !important;
+                margin-top: 20px !important;
+            }
+
+            #contenedorImpresionDinamica tr {
+                display: table-row !important;
+            }
+
+            #contenedorImpresionDinamica th {
+                display: table-cell !important;
+                background-color: #f8f9fa !important;
+                color: #008F80 !important;
+                font-weight: bold !important;
+                border-bottom: 2px solid #008F80 !important;
+                padding: 10px !important;
+                text-align: left !important;
+            }
+
+            #contenedorImpresionDinamica td {
+                display: table-cell !important;
+                padding: 10px !important;
+                border-bottom: 1px solid #edf2f7 !important;
+            }
+
+            body {
+                background: white !important;
+                color: black !important;
+                font-family: system-ui, -apple-system, sans-serif !important;
+                font-size: 13px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+        }
+    </style>
 </head>
 
-<style>
 
-    @media print {
-        header, footer, nav, form, .panel-filtros-turnos, h1, h2, p, .contenedor-principal {
-            display: none !important;
-        }
-
-        #contenedorImpresionDinamica {
-            display: block !important;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-        }
-
-        body {
-            background: white !important;
-            color: black !important;
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-        }
-    }
-
-</style>
 <body>
 
     <header id="global-header"></header>

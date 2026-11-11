@@ -66,9 +66,9 @@ document.getElementById('formulario-contacto').addEventListener('submit', async 
 
         mostrarMensaje(`¡Bienvenido, ${data.firstName} ${data.lastName}!`, 'exito');
 
-        const tokenCifrado = btoa(`FirmadoLaMaryVete_${data.token}`);
-        localStorage.setItem('userToken', tokenCifrado);
-        localStorage.setItem('userData', JSON.stringify(data));
+        const tokenRecibido = data.accessToken || data.token;
+        sessionStorage.setItem('userToken', tokenRecibido);
+        sessionStorage.setItem('userData', JSON.stringify(data));
 
         setTimeout(() => {
             window.location.href = 'admin.html';
@@ -113,7 +113,6 @@ function iniciarContadorVisual(tiempoRestanteMs) {
     function actualizarReloj() {
         if (tiempoRestante <= 0) {
             clearInterval(intervaloContador);
-            localStorage.removeItem('tiempoBlequeo');
             localStorage.removeItem('tiempoBloqueo');
             localStorage.setItem('intentosFallidos', '0');
             

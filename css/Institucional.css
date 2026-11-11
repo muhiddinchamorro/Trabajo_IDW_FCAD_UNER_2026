@@ -1,7 +1,7 @@
 :root {
-    --color-fondo: #f7f9f9;
+    --color-fondo: #fff;
     --color-pilar: #a8c0c0; 
-    --color-tarjeta-vet: #b3c7c7; /* para el equipo */
+    --color-tarjeta-vet: #b3c7c7; 
     --color-texto-oscuro: #2c3e50;
     --color-blanco: #ffffff;
 }
@@ -94,60 +94,55 @@ body {
     line-height: 1.4;
 }
 
-/*Equipo*/
-.seccion-equipo h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+.seccion-salas {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
 }
 
-.subtitulo-equipo {
+.sala {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.sala-invertida {
+    flex-direction: row-reverse;
+}
+
+.sala-texto,
+.sala-imagen {
+    flex: 1 1 0;
+}
+
+.sala-texto h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.sala-texto p {
     font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 5rem; 
+    margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
-.grid-equipo {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    row-gap: 6rem; 
-}
-
-.card-especialista {
-    background-color: var(--color-tarjeta-vet);
-    color: var(--color-blanco);
-    border-radius: 1rem;
-    padding: 5rem 1.5rem 2rem;
-    position: relative; 
-    text-align: left;
-}
-
-.foto-wrapper {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    border: 6px solid var(--color-fondo);
-    position: absolute;
-    top: -70px; 
-    left: 1.5rem;
-    overflow: hidden;
-    background-color: var(--color-blanco);
-}
-
-.foto-wrapper img {
+.sala-imagen img {
     width: 100%;
-    height: 100%;
+    height: 320px;
     object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.info-especialista h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-}
+@media (max-width: 768px) {
+    .sala,
+    .sala-invertida {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
 
-.info-especialista p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+    .sala-texto h2 {
+        font-size: 2rem;
+    }
 }

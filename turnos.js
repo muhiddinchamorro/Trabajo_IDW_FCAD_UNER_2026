@@ -23,7 +23,9 @@ function mostrarTurnos() {
     turnos.forEach(function(turno) {
         const fila = document.createElement("tr");
         fila.className = "fila-registro";
-
+        fila.dataset.dueno = (turno.dueno + " " + turno.correo).toLowerCase();
+        fila.dataset.servicio = (turno.servicio || "").toLowerCase();
+        fila.dataset.especie = (turno.especie || "").toLowerCase();
         const fechaFormateada = turno.fecha ? turno.fecha.split('-').reverse().join('/') : '---';
 
         fila.innerHTML = `
@@ -156,9 +158,9 @@ function filtrarTablaTurnos() {
     const filas = document.querySelectorAll("#tablaTurnos .fila-registro");
 
     filas.forEach(function(fila) {
-        const tDueno = fila.cells[0] ? fila.cells[0].textContent.toLowerCase() : "";
-        const tServicio = fila.cells[1] ? fila.cells[1].textContent.toLowerCase() : "";
-        const tEspecie = fila.cells[1] ? fila.cells[1].textContent.toLowerCase() : "";
+        const tDueno = fila.dataset.dueno || "";
+        const tServicio = fila.dataset.servicio || "";
+        const tEspecie = fila.dataset.especie || "";
 
         const cDueno = tDueno.includes(vDueno);
         const cServicio = tServicio.includes(vServicio);

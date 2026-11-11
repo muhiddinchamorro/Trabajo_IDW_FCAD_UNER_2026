@@ -43,7 +43,7 @@ function mostrarVeterinarios() {
                 <span>${nombre}</span>
             </td>
             <td>${especializacion}</td>
-            <td>$${valor}</td>
+            <td data-precio="${valor}">${Number(valor).toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}</td>
             <td>
                 <div class="acciones-veterinario">
                     <button
@@ -73,7 +73,7 @@ formularioVeterinario.addEventListener("submit", function(event) {
 
     const nuevoVeterinario = {
         nombreVeterinario: document.getElementById("nombreVeterinario").value.trim(),
-        matricula: document.getElementById("matricula").value.trim(),
+        matricula: parseInt(document.getElementById("matricula").value, 10) || 0,
         especializacion: document.getElementById("especializacion").value.trim(),
         valorConsulta: parseFloat(document.getElementById("valorConsulta").value) || 0,
         fotoVeterinario: urlFoto
@@ -213,8 +213,7 @@ function filtrarTablaVeterinarios() {
         const tNombre = fila.cells[2] ? fila.cells[2].textContent.toLowerCase() : "";
         const tEspecialidad = fila.cells[3] ? fila.cells[3].textContent.toLowerCase() : "";
         
-        const tPrecioRaw = fila.cells[4] ? fila.cells[4].textContent : "";
-        const nPrecio = parseFloat(tPrecioRaw.replace(/[^0-9.]/g, '')) || 0;
+        const nPrecio = fila.cells[4] ? parseFloat(fila.cells[4].dataset.precio) || 0 : 0;
 
         const cMatricula = tMatricula.includes(vMatricula);
         const cNombre = tNombre.includes(vNombre);

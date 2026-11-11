@@ -2,13 +2,14 @@ const paginasProtegidas = [
     'admin.html',
     'mascotas.html',
     'veterinarios.html',
-    'historia_clinica.html'
+    'historia_clinica.html',
+    'pedirturno.html'
 ];
 
 const pathname = window.location.pathname;
 
 const urlActual = pathname.substring(pathname.lastIndexOf('/') + 1).toLowerCase() || 'index.html';
-const tokenActivo = localStorage.getItem('userToken');
+const tokenActivo = sessionStorage.getItem('userToken');
 
 if (paginasProtegidas.includes(urlActual) && !tokenActivo) {
     window.location.href = './login.html'; 
@@ -27,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         contenedorHeader.style.display = "flex";
         contenedorHeader.style.justifyContent = "space-between";
         contenedorHeader.style.alignItems = "center";
-        contenedorHeader.style.padding = "15px 40px";
+        contenedorHeader.style.padding = "10px 20px";
         contenedorHeader.style.background = "#ffffff";
         contenedorHeader.style.boxShadow = "0 2px 10px rgba(0,0,0,0.05)";
         contenedorHeader.style.fontFamily = "system-ui, -apple-system, sans-serif";
@@ -38,21 +39,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const mostrarMenuPrivado = tokenActivo && urlActual !== 'login.html';
 
-        const obtenerEstiloEnlace = (nombrePagina, esAdminLink = false) => {
-            if (urlActual === nombrePagina) {
-                return 'text-decoration: none; font-weight: 700; color: #008F80;';
-            }
-            return esAdminLink 
-                ? 'text-decoration: none; font-weight: 700; color: #4a5568;' 
-                : 'text-decoration: none; color: #4a5568; font-weight: 500;';
-        }; 
+        const obtenerEstiloEnlace = () => '';
 
         contenedorHeader.innerHTML = `
-        <div class="logo-seccion" style="display: flex; align-items: center; gap: 12px;">
-            <img src="./asset/images/icono.png" alt="Logo de la veterinaria" class="logo-veterinaria" style="width: 45px;">
-            <span class="logo-texto" style="font-weight: 700; color: #2d3748; font-size: 1.3rem;">La Mary</span>
+        <div class="logo-seccion" style="display: flex; align-items: center;">
+            <img src="./asset/images/imagen.png" alt="Logo de la veterinaria" class="logo-veterinaria" style="width: 140px;">
         </div>
-
+        
 
         <button id="btn-hamburguesa" class="btn-hamburguesa" aria-label="Abrir menú" style="display: none; background: none; border: none; font-size: 28px; cursor: pointer; color: #2d3748;">
             ☰
@@ -64,24 +57,36 @@ document.addEventListener("DOMContentLoaded", function() {
             <a href="./contacto.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('contacto.html')}">Contacto</a>
             
             ${mostrarMenuPrivado ? `
-                <a href="./admin.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('admin.html', true)}">Panel Admin</a>
+                <a href="./admin.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('admin.html')}">Panel Admin</a>
                 <a href="./mascotas.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('mascotas.html')}">Mascotas</a>
                 <a href="./veterinarios.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('veterinarios.html')}">Veterinarios</a>
                 <a href="./historia_clinica.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('historia_clinica.html')}">Historias Clínicas</a>
-                <a href="./pedirturno.html" class="nav-link-dinamico" style="${obtenerEstiloEnlace('pedirturno.html')}">Gestión Turnos</a>
             ` : ''}
+            <div class="botones-sesion-movil">
+                ${mostrarMenuPrivado ? `
+                    <a href="./pedirturno.html" class="btn-pedir-turno" style="background-color: #f17e6d; color: white; font-weight: bold; text-decoration: none;">Pedir turno</a>
+                    <a href="#" class="btn-registrar btn-logout" style="background-color: #008F80; color: white; font-weight: bold; text-decoration: none;">Cerrar Sesión</a>
+                ` : `
+                    <a href="./login.html" class="btn-registrar" style="background-color: #008F80; color: white; font-weight: bold; text-decoration: none;">Iniciar Sesión</a>
+                `}
+            </div>
         </nav>
 
         <div class="botones-sesion" style="display: flex; align-items: center; gap: 12px;">
             ${mostrarMenuPrivado ? `
                 <a href="./pedirturno.html" class="btn-pedir-turno" style="background-color: #f17e6d; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: bold;">Pedir turno</a>
-                <a href="#" id="btn-logout" class="btn-registrar" style="text-decoration: none; display: inline-block; background-color: #008F80; color: white; padding: 8px 16px; border-radius: 4px;">Cerrar Sesión</a>
+                <a href="#" class="btn-registrar btn-logout" style="background-color: #008F80; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: bold; display: inline-block;">Cerrar Sesión</a>
             ` : `
-                <a href="./login.html" class="btn-registrar" style="text-decoration: none; display: inline-block; background-color: #008F80; color: white; padding: 8px 16px; border-radius: 4px;">Iniciar Sesión</a>
+                <a href="./login.html" class="btn-registrar" style="background-color: #008F80; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: bold; display: inline-block;">Iniciar Sesión</a>
             `}
         </div>
         `;
 
+        document.querySelectorAll('.nav-link-dinamico').forEach(function(enlace) {
+            if (enlace.getAttribute('href') === './' + urlActual) {
+                enlace.classList.add('activo');
+            }
+        });
         try {
             const btnHamburguesa = document.getElementById('btn-hamburguesa');
             const navPrincipal = document.getElementById('navegacion-principal');
@@ -101,15 +106,14 @@ document.addEventListener("DOMContentLoaded", function() {
             console.warn("Error controlado en el menú adaptativo:", error);
         }
 
-        const botonLogout = document.getElementById('btn-logout');
-        if (botonLogout) {
+        document.querySelectorAll('.btn-logout').forEach(function(botonLogout) {
             botonLogout.addEventListener('click', function(evento) {
                 evento.preventDefault();
-                localStorage.removeItem('userToken');
-                localStorage.removeItem('userData');
+                sessionStorage.removeItem('userToken');
+                sessionStorage.removeItem('userData');
                 window.location.href = './index.html';
             });
-        }
+        });
     }
 
     if (urlActual === 'historia_clinica.html') {

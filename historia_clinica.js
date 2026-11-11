@@ -14,6 +14,21 @@ function generarIdHistoria() {
     return id;
 }
 
+function cargarMascotasEnSelect() {
+    const select = document.getElementById("mascotaHistoria");
+    if (!select) return;
+
+    const mascotas = JSON.parse(localStorage.getItem("mascotas")) || [];
+    select.innerHTML = '<option value="">Seleccione una mascota</option>';
+
+    mascotas.forEach(function(m) {
+        const opcion = document.createElement("option");
+        opcion.value = m.idMascota;
+        opcion.textContent = m.nombreMascota + " (" + m.nombreDuenio + ")";
+        select.appendChild(opcion);
+    });
+}
+
 function mostrarHistorias() {
     if (!tablaHistorias) return;
     
@@ -47,7 +62,10 @@ function mostrarHistorias() {
             </td>
             <td>${proximoControlFormateado}</td>
             <td>
-                <div class="acciones-mascota" style="display: flex; gap: 8px;">
+                <div class="acciones-mascota" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="btn-accion" title="Ver historial completo" onclick="window.verHistorialMascota('${historia.idHistoria}')" style="background-color: #343a40; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">
+                        Ver historial
+                    </button>
                     <button class="btn-accion btn-editar" title="Editar Registro" onclick="window.editarHistoria('${historia.idHistoria}')" style="background-color: #008F80; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">
                         Editar
                     </button>
@@ -70,7 +88,8 @@ if (formularioHistoria) {
         event.preventDefault();
 
         const nuevaHistoria = {
-            mascota: document.getElementById("mascotaHistoria").value.trim(),
+            idMascota: document.getElementById("mascotaHistoria").value,
+            mascota: document.getElementById("mascotaHistoria").selectedOptions[0].textContent,
             fecha: document.getElementById("fechaHistoria").value,
             motivo: document.getElementById("motivoHistoria").value.trim(),
             peso: parseFloat(document.getElementById("pesoHistoria").value) || 0,
@@ -82,7 +101,7 @@ if (formularioHistoria) {
             proximoControl: document.getElementById("proximoControlHistoria").value
         };
 
-        if (!nuevaHistoria.mascota || !nuevaHistoria.fecha || !nuevaHistoria.diagnostico) {
+        if (!nuevaHistoria.idMascota || !nuevaHistoria.fecha || !nuevaHistoria.diagnostico)  {
             alert("Por favor, completa los campos esenciales (Mascota, Fecha y Diagnóstico).");
             return;
         }
@@ -108,7 +127,7 @@ if (formularioHistoria) {
         idHistoriaEditando = null;
         
         if (botonRegistrar) {
-            botonRegistrar.textContent = "Registrar historia";
+            botonRegistrar.textContent = "Registrar historia clínica";
         }
         
         mostrarHistorias();
@@ -121,7 +140,7 @@ window.editarHistoria = function(id) {
 
     if (!historia || !formularioHistoria) return;
 
-    document.getElementById("mascotaHistoria").value = historia.mascota;
+    document.getElementById("mascotaHistoria").value = historia.idMascota || "";
     document.getElementById("fechaHistoria").value = historia.fecha;
     document.getElementById("motivoHistoria").value = historia.motivo;
     document.getElementById("pesoHistoria").value = historia.peso;
@@ -150,7 +169,7 @@ window.eliminarHistoria = function(id) {
     if (idHistoriaEditando && idHistoriaEditando.toString() === id.toString()) {
         if (formularioHistoria) formularioHistoria.reset();
         idHistoriaEditando = null;
-        if (botonRegistrar) botonRegistrar.textContent = "Registrar historia";
+        if (botonRegistrar) botonRegistrar.textContent = "Registrar historia clínica";
     }
 
     mostrarHistorias();
@@ -182,23 +201,23 @@ function filtrarTablaHistorias() {
     const vDiag = document.getElementById("fHistDiag").value.toLowerCase().trim();
     const vTrat = document.getElementById("fHistTratamiento").value.toLowerCase().trim();
 
-    // Apunta de manera precisa al tbody que vemos en tu captura HTML
+    
     const filas = document.querySelectorAll("#tablaHistorias .fila-registro");
 
     filas.forEach(function(fila) {
-        // Mapeo directo basándonos en tu estructura sin columna ID
+        
         const tMascota = fila.cells[0] ? fila.cells[0].textContent.toLowerCase() : "";
         const tSintomas = fila.cells[2] ? fila.cells[2].textContent.toLowerCase() : "";
         const tDiag = fila.cells[3] ? fila.cells[3].textContent.toLowerCase() : "";
         const tTrat = fila.cells[4] ? fila.cells[4].textContent.toLowerCase() : "";
 
-        // Evaluaciones cruzadas de los criterios escritos
+        
         const cMascota = tMascota.includes(vMascota);
         const cSintomas = tSintomas.includes(vSintomas);
         const cDiag = tDiag.includes(vDiag);
         const cTrat = tTrat.includes(vTrat);
 
-        // Muestra u oculta la fila según el estado de los filtros
+        
         if (cMascota && cSintomas && cDiag && cTrat) {
             fila.style.display = "";
         } else {
@@ -274,4 +293,76 @@ window.exportarSeccionConFiltro = function(seccion) {
 };
 
 
-document.addEventListener("DOMContentLoaded", mostrarHistorias);
+document.addEventListener("DOMContentLoaded", function() {
+    cargarMascotasEnSelect();
+    mostrarHistorias();
+});
+
+function escaparHTML(texto) {
+    return String(texto == null ? "" : texto)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+window.verHistorialMascota = function(idHistoria) {
+    const historias = JSON.parse(localStorage.getItem("historiasClinicas")) || [];
+    const base = historias.find(function(h) {
+        return h.idHistoria.toString() === idHistoria.toString();
+    });
+    if (!base) return;
+
+    const seccion = document.getElementById("seccionHistorialMascota");
+    const titulo = document.getElementById("tituloHistorialMascota");
+    const resumen = document.getElementById("resumenHistorialMascota");
+    const lista = document.getElementById("listaHistorialMascota");
+    if (!seccion || !titulo || !resumen || !lista) return;
+
+    
+    const delaMascota = historias.filter(function(h) {
+        if (base.idMascota) return h.idMascota === base.idMascota;
+        return !h.idMascota && h.mascota === base.mascota;
+    });
+
+    
+    delaMascota.sort(function(a, b) {
+        return (b.fecha || "").localeCompare(a.fecha || "");
+    });
+
+    titulo.textContent = "Historial completo de " + base.mascota;
+    resumen.textContent = "Total de consultas registradas: " + delaMascota.length;
+    lista.innerHTML = "";
+
+    delaMascota.forEach(function(h) {
+        const fecha = h.fecha ? h.fecha.split("-").reverse().join("/") : "---";
+        const proximo = h.proximoControl ? h.proximoControl.split("-").reverse().join("/") : "No requerido";
+
+        const tarjeta = document.createElement("div");
+        tarjeta.style.cssText = "border: 1px solid #e2e8f0; border-left: 5px solid #008F80; border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; background: #fff;";
+        tarjeta.innerHTML = `
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                <strong style="color: #008F80; font-size: 1.05rem;">${fecha}</strong>
+                <span>Motivo: <strong>${escaparHTML(h.motivo)}</strong></span>
+            </div>
+            <div style="color: #555; font-size: 0.9rem; margin-bottom: 8px;">
+                Peso: ${escaparHTML(h.peso || "---")} kg · Temperatura: ${escaparHTML(h.temperatura || "---")} °C
+            </div>
+            <p style="margin: 4px 0;"><strong>Síntomas:</strong> ${escaparHTML(h.sintomas)}</p>
+            <p style="margin: 4px 0;"><strong>Diagnóstico:</strong> ${escaparHTML(h.diagnostico)}</p>
+            <p style="margin: 4px 0;"><strong>Tratamiento:</strong> ${escaparHTML(h.tratamiento)}</p>
+            <p style="margin: 4px 0;"><strong>Medicación:</strong> ${escaparHTML(h.medicacion || "Ninguna")}</p>
+            <p style="margin: 4px 0;"><strong>Próximo control:</strong> ${proximo}</p>
+        `;
+        lista.appendChild(tarjeta);
+    });
+
+    seccion.style.display = "block";
+    seccion.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+window.cerrarHistorialMascota = function() {
+    const seccion = document.getElementById("seccionHistorialMascota");
+    if (seccion) seccion.style.display = "none";
+};

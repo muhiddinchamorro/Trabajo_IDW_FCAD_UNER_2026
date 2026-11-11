@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
         contenedorHeader.style.width = "100%";
         contenedorHeader.style.boxSizing = "border-box";
 
-        const mostrarMenuPrivado = tokenActivo && urlActual !== 'login';
+        const mostrarMenuPrivado = tokenActivo && paginaActual !== 'login';
+
 
         const obtenerEstiloEnlace = () => '';
 
@@ -84,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
 
         document.querySelectorAll('.nav-link-dinamico').forEach(function(enlace) {
-            if (enlace.getAttribute('href') === './' + urlActual) {
+            if (enlace.getAttribute('href') === './' + paginaActual + '.html') {
                 enlace.classList.add('activo');
             }
         });
@@ -117,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    if (urlActual === 'historia_clinica.html') {
+        if (paginaActual === 'historia_clinica') {
         if (typeof mostrarHistorias === "function") {
             mostrarHistorias();
         }

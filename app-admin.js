@@ -1,22 +1,23 @@
 const paginasProtegidas = [
-    'admin.html',
-    'mascotas.html',
-    'veterinarios.html',
-    'historia_clinica.html',
-    'pedirturno.html'
+    'admin',
+    'mascotas',
+    'veterinarios',
+    'historia_clinica',
+    'pedirturno'
 ];
 
-const pathname = window.location.pathname;
+const pathname = window.location.pathname.replace(/\/+$/, '');
+const segmentoFinal = pathname.substring(pathname.lastIndexOf('/') + 1).toLowerCase();
+const paginaActual = segmentoFinal.replace(/\.html$/, '') || 'index';
 
-const urlActual = pathname.substring(pathname.lastIndexOf('/') + 1).toLowerCase() || 'index.html';
 const tokenActivo = sessionStorage.getItem('userToken');
 
-if (paginasProtegidas.includes(urlActual) && !tokenActivo) {
-    window.location.href = './login.html'; 
+if (paginasProtegidas.includes(paginaActual) && !tokenActivo) {
+    window.location.replace('./login.html');
 }
 
-if (urlActual === 'login.html' && tokenActivo) {
-    window.location.href = './admin.html'; 
+if (paginaActual === 'login' && tokenActivo) {
+    window.location.replace('./admin.html');
 }
 
 
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         contenedorHeader.style.width = "100%";
         contenedorHeader.style.boxSizing = "border-box";
 
-        const mostrarMenuPrivado = tokenActivo && urlActual !== 'login.html';
+        const mostrarMenuPrivado = tokenActivo && urlActual !== 'login';
 
         const obtenerEstiloEnlace = () => '';
 

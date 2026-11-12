@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
         mostrarMascotas();
     }
 
-    const idsInputs = ["fMascotaNombre", "fMascotaDuenio", "fMascotaColor", "fMascotaEdad", "fMascotaPeso"];
+    const idsInputs = ["fMascotaNombre", "fMascotaDuenio", "fMascotaColor", "fMascotaEdad"];
     idsInputs.forEach(function(id) {
         const el = document.getElementById(id);
         if (el) {
@@ -201,13 +201,11 @@ function filtrarTablaMascotas() {
     const inpDuenio = document.getElementById("fMascotaDuenio");
     const inpColor  = document.getElementById("fMascotaColor");
     const inpEdad   = document.getElementById("fMascotaEdad");
-    const inpPeso   = document.getElementById("fMascotaPeso");
 
     const vNombre  = inpNombre ? inpNombre.value.toLowerCase().trim() : "";
     const vDuenio  = inpDuenio ? inpDuenio.value.toLowerCase().trim() : "";
     const vColor   = inpColor  ? inpColor.value.toLowerCase().trim() : "";
     const vEdad    = inpEdad   ? inpEdad.value.trim() : "";
-    const vPesoMax = inpPeso   ? (parseFloat(inpPeso.value) || null) : null;
 
     const filas = document.querySelectorAll("#tablaMascotas .fila-registro");
 
@@ -218,16 +216,13 @@ function filtrarTablaMascotas() {
         const tDuenio  = fila.cells[1].textContent.toLowerCase();
         const tColor   = fila.cells[2].textContent.toLowerCase();
         const tEdad    = fila.cells[3].textContent.trim();
-        const tPesoRaw = fila.cells[4].textContent;
-        const nPeso    = parseFloat(tPesoRaw.replace(/[^0-9.]/g, '')) || 0;
 
         const cNombre = tNombre.includes(vNombre);
         const cDuenio = tDuenio.includes(vDuenio);
         const cColor  = tColor.includes(vColor);
         const cEdad   = !vEdad || tEdad === vEdad;
-        const cPeso   = !vPesoMax || nPeso <= vPesoMax;
 
-        if (cNombre && cDuenio && cColor && cEdad && cPeso) {
+        if (cNombre && cDuenio && cColor && cEdad) {
             fila.style.display = "";
         } else {
             fila.style.display = "none";

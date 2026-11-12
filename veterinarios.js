@@ -196,30 +196,26 @@ function filtrarTablaVeterinarios() {
     const inpMatricula = document.getElementById("fVetMatricula");
     const inpNombre = document.getElementById("fVetNombre");
     const inpEspecialidad = document.getElementById("fVetEspecialidad");
-    const inpPrecio = document.getElementById("fVetPrecio");
 
     const vMatricula = inpMatricula ? inpMatricula.value.toLowerCase().trim() : "";
     const vNombre = inpNombre ? inpNombre.value.toLowerCase().trim() : "";
     const vEspecialidad = inpEspecialidad ? inpEspecialidad.value.toLowerCase().trim() : "";
-    const vPrecioMax = inpPrecio ? (parseFloat(inpPrecio.value) || null) : null;
 
     const filas = document.querySelectorAll("#tablaVeterinarios .fila-registro");
 
     filas.forEach(function(fila) {
-        if (!fila.cells || fila.cells.length < 4) return;
+        if (!fila.cells || fila.cells.length < 3) return;
 
         const tMatricula = fila.cells[1] ? fila.cells[1].textContent.toLowerCase() : "";
         const tNombre = fila.cells[2] ? fila.cells[2].textContent.toLowerCase() : "";
         const tEspecialidad = fila.cells[3] ? fila.cells[3].textContent.toLowerCase() : "";
         
-        const nPrecio = fila.cells[4] ? parseFloat(fila.cells[4].dataset.precio) || 0 : 0;
 
         const cMatricula = tMatricula.includes(vMatricula);
         const cNombre = tNombre.includes(vNombre);
         const cEspecialidad = tEspecialidad.includes(vEspecialidad);
-        const cPrecio = !vPrecioMax || nPrecio <= vPrecioMax;
 
-        if (cMatricula && cNombre && cEspecialidad && cPrecio) {
+        if (cMatricula && cNombre && cEspecialidad) {
             fila.style.display = "";
         } else {
             fila.style.display = "none";

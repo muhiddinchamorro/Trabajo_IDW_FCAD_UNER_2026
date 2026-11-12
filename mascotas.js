@@ -30,7 +30,6 @@ function mostrarMascotas() {
         fila.className = "fila-registro";
 
         fila.innerHTML = `
-            <td>${mascota.idMascota}</td>
             <td>${mascota.nombreMascota}</td>
             <td>${mascota.nombreDuenio}</td>
             <td>${mascota.color}</td>
@@ -213,13 +212,13 @@ function filtrarTablaMascotas() {
     const filas = document.querySelectorAll("#tablaMascotas .fila-registro");
 
     filas.forEach(function(fila) {
-        if (!fila.cells || fila.cells.length < 6) return;
+        if (!fila.cells || fila.cells.length < 5) return;
 
-        const tNombre  = fila.cells[1].textContent.toLowerCase();
-        const tDuenio  = fila.cells[2].textContent.toLowerCase();
-        const tColor   = fila.cells[3].textContent.toLowerCase();
-        const tEdad    = fila.cells[4].textContent.trim();
-        const tPesoRaw = fila.cells[5].textContent;
+        const tNombre  = fila.cells[0].textContent.toLowerCase();
+        const tDuenio  = fila.cells[1].textContent.toLowerCase();
+        const tColor   = fila.cells[2].textContent.toLowerCase();
+        const tEdad    = fila.cells[3].textContent.trim();
+        const tPesoRaw = fila.cells[4].textContent;
         const nPeso    = parseFloat(tPesoRaw.replace(/[^0-9.]/g, '')) || 0;
 
         const cNombre = tNombre.includes(vNombre);

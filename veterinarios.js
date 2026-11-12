@@ -36,7 +36,6 @@ function mostrarVeterinarios() {
             : fotoPorDefecto;
 
         fila.innerHTML = `
-            <td>${id}</td>
             <td>${matricula}</td>
             <td style="display: flex; align-items: center; gap: 10px;">
                 <img src="${foto}" alt="Foto" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc;">
@@ -207,7 +206,7 @@ function filtrarTablaVeterinarios() {
     const filas = document.querySelectorAll("#tablaVeterinarios .fila-registro");
 
     filas.forEach(function(fila) {
-        if (!fila.cells || fila.cells.length < 5) return;
+        if (!fila.cells || fila.cells.length < 4) return;
 
         const tMatricula = fila.cells[1] ? fila.cells[1].textContent.toLowerCase() : "";
         const tNombre = fila.cells[2] ? fila.cells[2].textContent.toLowerCase() : "";

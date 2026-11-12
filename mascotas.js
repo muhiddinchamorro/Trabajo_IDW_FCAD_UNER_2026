@@ -9,7 +9,7 @@ function generarIdMascota() {
     let id;
 
     do {
-        id = Math.floor(100000 + Math.random() * 900000).toString();
+        id = Math.floor(100000 + Math.random() * 900000).toString().padStart(6, "0");
     } while (mascotas.some(function(mascota) {
         return mascota.idMascota === id;
     }));

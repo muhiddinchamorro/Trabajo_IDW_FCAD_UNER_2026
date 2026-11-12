@@ -7,7 +7,7 @@ function generarIdVeterinario() {
     const veterinarios = JSON.parse(localStorage.getItem("veterinarios")) || [];
     let id;
     do {
-        id = Math.floor(100000 + Math.random() * 900000).toString();
+        id = Math.floor(100000 + Math.random() * 900000).toString().padStart(6, "0");
     } while (veterinarios.some(function(veterinario) {
         return veterinario.idVeterinario === id;
     }));

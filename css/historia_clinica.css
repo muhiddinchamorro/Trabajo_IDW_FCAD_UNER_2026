@@ -1,3 +1,11 @@
+main, section, .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-x: hidden; /* Evita que toda la página se mueva hacia los lados */
+}
+
 .formulario-mascotas {
     max-width: 1050px; 
     margin: 0 auto;

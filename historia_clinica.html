@@ -17,11 +17,11 @@
 <header id="global-header"></header>
 
 
-    <main class="formulario-historias" style="padding-top: 30px; padding-bottom: 30px;">
+    <main class="formulario-mascotas" style="padding-top: 30px; padding-bottom: 30px;">
         <h1>Administrar historias clínicas</h1>
         <p class="subtitulo">Completá los datos para registrar una nueva entrada en la historia clínica.</p>
 
-    <form id="formularioHistorias" class="formulario-mascotas">
+    <form id="formularioHistoria" class="formulario-mascotas">
         <div class="row mb-3">
             <div class="col-md-4">
                 <label for="mascotaHistoria" class="form-label">Mascota</label>
@@ -123,11 +123,9 @@
 
         </div>
 
-        <p class="aviso-scroll-movil">← Deslizá la tabla hacia los lados para ver más datos →</p>
 
-
-        <div class="tabla-responsive">
-            <table class="estilo-tabla">
+        <div style="overflow-x: auto; margin-top: 20px;">
+            <table class="estilo-tabla" style="width: 100%;">
                 <thead>
                     <tr>
                         <th>Mascota / Fecha</th>
@@ -183,7 +181,6 @@
     </footer>
 
     <script src="historia_clinica.js"></script>
-
     <div id="contenedorImpresionDinamica"></div>
 
 </body>

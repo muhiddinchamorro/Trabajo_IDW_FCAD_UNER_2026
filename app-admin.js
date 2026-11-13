@@ -1,23 +1,22 @@
 const paginasProtegidas = [
-    'admin',
-    'mascotas',
-    'veterinarios',
-    'historia_clinica',
-    'pedirturno'
+    'admin.html',
+    'mascotas.html',
+    'veterinarios.html',
+    'historia_clinica.html',
+    'pedirturno.html'
 ];
 
-const pathname = window.location.pathname.replace(/\/+$/, '');
-const segmentoFinal = pathname.substring(pathname.lastIndexOf('/') + 1).toLowerCase();
-const paginaActual = segmentoFinal.replace(/\.html$/, '') || 'index';
+const pathname = window.location.pathname;
 
+const urlActual = pathname.substring(pathname.lastIndexOf('/') + 1).toLowerCase() || 'index.html';
 const tokenActivo = sessionStorage.getItem('userToken');
 
-if (paginasProtegidas.includes(paginaActual) && !tokenActivo) {
-    window.location.replace('./login.html');
+if (paginasProtegidas.includes(urlActual) && !tokenActivo) {
+    window.location.href = './login.html'; 
 }
 
-if (paginaActual === 'login' && tokenActivo) {
-    window.location.replace('./admin.html');
+if (urlActual === 'login.html' && tokenActivo) {
+    window.location.href = './admin.html'; 
 }
 
 
@@ -38,8 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
         contenedorHeader.style.width = "100%";
         contenedorHeader.style.boxSizing = "border-box";
 
-        const mostrarMenuPrivado = tokenActivo && paginaActual !== 'login';
-
+        const mostrarMenuPrivado = tokenActivo && urlActual !== 'login.html';
 
         const obtenerEstiloEnlace = () => '';
 
@@ -85,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
 
         document.querySelectorAll('.nav-link-dinamico').forEach(function(enlace) {
-            if (enlace.getAttribute('href') === './' + paginaActual + '.html') {
+            if (enlace.getAttribute('href') === './' + urlActual) {
                 enlace.classList.add('activo');
             }
         });
@@ -118,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-        if (paginaActual === 'historia_clinica') {
+    if (urlActual === 'historia_clinica.html') {
         if (typeof mostrarHistorias === "function") {
             mostrarHistorias();
         }

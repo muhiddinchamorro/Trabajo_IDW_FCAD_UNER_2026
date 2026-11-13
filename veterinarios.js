@@ -7,7 +7,7 @@ function generarIdVeterinario() {
     const veterinarios = JSON.parse(localStorage.getItem("veterinarios")) || [];
     let id;
     do {
-        id = Math.floor(100000 + Math.random() * 900000).toString().padStart(6, "0");
+        id = Math.floor(100000 + Math.random() * 900000).toString();
     } while (veterinarios.some(function(veterinario) {
         return veterinario.idVeterinario === id;
     }));
@@ -36,6 +36,7 @@ function mostrarVeterinarios() {
             : fotoPorDefecto;
 
         fila.innerHTML = `
+            
             <td>${matricula}</td>
             <td style="display: flex; align-items: center; gap: 10px;">
                 <img src="${foto}" alt="Foto" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc;">
@@ -196,26 +197,29 @@ function filtrarTablaVeterinarios() {
     const inpMatricula = document.getElementById("fVetMatricula");
     const inpNombre = document.getElementById("fVetNombre");
     const inpEspecialidad = document.getElementById("fVetEspecialidad");
+    const inpPrecio = document.getElementById("fVetPrecio");
 
     const vMatricula = inpMatricula ? inpMatricula.value.toLowerCase().trim() : "";
     const vNombre = inpNombre ? inpNombre.value.toLowerCase().trim() : "";
     const vEspecialidad = inpEspecialidad ? inpEspecialidad.value.toLowerCase().trim() : "";
+    const vPrecioMax = inpPrecio ? (parseFloat(inpPrecio.value) || null) : null;
 
     const filas = document.querySelectorAll("#tablaVeterinarios .fila-registro");
 
     filas.forEach(function(fila) {
-        if (!fila.cells || fila.cells.length < 3) return;
+        if (!fila.cells || fila.cells.length < 5) return;
 
-        const tMatricula = fila.cells[1] ? fila.cells[1].textContent.toLowerCase() : "";
-        const tNombre = fila.cells[2] ? fila.cells[2].textContent.toLowerCase() : "";
-        const tEspecialidad = fila.cells[3] ? fila.cells[3].textContent.toLowerCase() : "";
-        
+        const tMatricula = fila.cells[0] ? fila.cells[0].textContent.toLowerCase() : "";
+        const tNombre = fila.cells[1] ? fila.cells[1].textContent.toLowerCase() : "";
+        const tEspecialidad = fila.cells[2] ? fila.cells[2].textContent.toLowerCase() : "";
+        const nPrecio = fila.cells[3] ? parseFloat(fila.cells[3].dataset.precio) || 0 : 0;
 
         const cMatricula = tMatricula.includes(vMatricula);
         const cNombre = tNombre.includes(vNombre);
         const cEspecialidad = tEspecialidad.includes(vEspecialidad);
+        const cPrecio = !vPrecioMax || nPrecio <= vPrecioMax;
 
-        if (cMatricula && cNombre && cEspecialidad) {
+        if (cMatricula && cNombre && cEspecialidad && cPrecio) {
             fila.style.display = "";
         } else {
             fila.style.display = "none";

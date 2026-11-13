@@ -9,7 +9,7 @@ function generarIdMascota() {
     let id;
 
     do {
-        id = Math.floor(100000 + Math.random() * 900000).toString().padStart(6, "0");
+        id = Math.floor(100000 + Math.random() * 900000).toString();
     } while (mascotas.some(function(mascota) {
         return mascota.idMascota === id;
     }));
@@ -30,6 +30,7 @@ function mostrarMascotas() {
         fila.className = "fila-registro";
 
         fila.innerHTML = `
+            
             <td>${mascota.nombreMascota}</td>
             <td>${mascota.nombreDuenio}</td>
             <td>${mascota.color}</td>
@@ -161,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
         mostrarMascotas();
     }
 
-    const idsInputs = ["fMascotaNombre", "fMascotaDuenio", "fMascotaColor", "fMascotaEdad"];
+    const idsInputs = ["fMascotaNombre", "fMascotaDuenio", "fMascotaColor", "fMascotaEdad", "fMascotaPeso"];
     idsInputs.forEach(function(id) {
         const el = document.getElementById(id);
         if (el) {
@@ -201,28 +202,33 @@ function filtrarTablaMascotas() {
     const inpDuenio = document.getElementById("fMascotaDuenio");
     const inpColor  = document.getElementById("fMascotaColor");
     const inpEdad   = document.getElementById("fMascotaEdad");
+    const inpPeso   = document.getElementById("fMascotaPeso");
 
     const vNombre  = inpNombre ? inpNombre.value.toLowerCase().trim() : "";
     const vDuenio  = inpDuenio ? inpDuenio.value.toLowerCase().trim() : "";
     const vColor   = inpColor  ? inpColor.value.toLowerCase().trim() : "";
     const vEdad    = inpEdad   ? inpEdad.value.trim() : "";
+    const vPesoMax = inpPeso   ? (parseFloat(inpPeso.value) || null) : null;
 
     const filas = document.querySelectorAll("#tablaMascotas .fila-registro");
 
     filas.forEach(function(fila) {
-        if (!fila.cells || fila.cells.length < 5) return;
+        if (!fila.cells || fila.cells.length < 6) return;
 
         const tNombre  = fila.cells[0].textContent.toLowerCase();
         const tDuenio  = fila.cells[1].textContent.toLowerCase();
         const tColor   = fila.cells[2].textContent.toLowerCase();
         const tEdad    = fila.cells[3].textContent.trim();
+        const tPesoRaw = fila.cells[4].textContent;
+        const nPeso    = parseFloat(tPesoRaw.replace(/[^0-9.]/g, '')) || 0;
 
         const cNombre = tNombre.includes(vNombre);
         const cDuenio = tDuenio.includes(vDuenio);
         const cColor  = tColor.includes(vColor);
         const cEdad   = !vEdad || tEdad === vEdad;
+        const cPeso   = !vPesoMax || nPeso <= vPesoMax;
 
-        if (cNombre && cDuenio && cColor && cEdad) {
+        if (cNombre && cDuenio && cColor && cEdad && cPeso) {
             fila.style.display = "";
         } else {
             fila.style.display = "none";

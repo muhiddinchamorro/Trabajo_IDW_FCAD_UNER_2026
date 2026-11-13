@@ -1,7 +1,9 @@
 .formulario-mascotas {
     max-width: 1050px; 
     margin: 0 auto;
-    padding: 10px 0;
+    padding: 16px 20px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .formulario-mascotas h1 {
@@ -165,4 +167,35 @@ textarea.form-control {
         margin: 0 !important;
         padding: 0 !important;
     }
+}
+.tabla-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+}
+
+.estilo-tabla {
+    width: 100%;
+    min-width: 800px; /* Evita que las columnas de historias clínicas se aplasten */
+    border-collapse: collapse;
+}
+.formulario-historias {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 16px 20px; /* Da margen en los bordes del celular */
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.formulario-historias .form-control,
+.formulario-historias select {
+    width: 100%;
+    max-width: 100%;
+    background-color: #f5f5f5;
+    border: 1px solid transparent;
+    border-radius: 25px;
+    padding: 12px 18px;
+    min-height: 48px;
+    box-sizing: border-box;
 }

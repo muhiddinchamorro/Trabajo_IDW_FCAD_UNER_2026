@@ -207,3 +207,21 @@ textarea.form-control {
     min-height: 48px;
     box-sizing: border-box;
 }
+.tabla-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+/* Mensaje cuando la tabla está vacía */
+#tablaHistorias:empty::after {
+    content: "No hay historias clínicas registradas en este dispositivo.";
+    display: block;
+    padding: 20px;
+    color: #666;
+    font-style: italic;
+}
